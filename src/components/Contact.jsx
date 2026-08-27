@@ -29,7 +29,6 @@ export default function Contact() {
 
   const socials = [
     { label: 'LinkedIn', href: 'https://linkedin.com/in/dutaalamin' },
-    { label: 'GitHub', href: 'https://github.com/dutaalamin' },
     { label: 'Instagram', href: 'https://instagram.com/dutaalamin' }
   ];
 
@@ -49,11 +48,11 @@ export default function Contact() {
             <h2 className="font-display text-4xl sm:text-6xl lg:text-8xl font-light text-white leading-none tracking-wide uppercase">
               Let's work
               <br />
-              <span className="text-white/30">together</span>
+              <span className="text-white/60">together</span>
             </h2>
             
             {/* Minimal Arrow indicator */}
-            <div className="hidden sm:block text-white/20 mb-3 hover:text-[#5ce1e6] transition-colors duration-300">
+            <div className="hidden sm:block text-white/40 mb-3 hover:text-white transition-colors duration-300">
               <svg width="32" height="32" viewBox="0 0 16 16" fill="none">
                 <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -62,19 +61,19 @@ export default function Contact() {
         </div>
 
         {/* Divider line and Circular Magnetic CTA Button */}
-        <div className="relative w-full py-8 mb-16">
+        <div className="relative w-full py-8 mb-16 z-20">
           <div className="w-full h-[1px] bg-white/10" />
           
           {/* Circular Get In Touch Button crossing the line */}
-          <div className="absolute right-0 md:right-16 top-1/2 -translate-y-1/2">
+          <div className="absolute right-0 md:right-16 top-1/2 -translate-y-1/2 z-30">
             <motion.a
-              href="mailto:hello@duta1.com"
+              href="mailto:dutaalamin23@gmail.com"
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               whileHover={{ scale: 1.05 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="w-36 h-36 md:w-48 md:h-48 rounded-full bg-white text-black flex items-center justify-center font-display text-xs sm:text-sm tracking-[0.1em] uppercase font-semibold hover:bg-white/80 transition-all duration-500 shadow-2xl cursor-pointer"
+              className="w-36 h-36 md:w-48 md:h-48 rounded-full bg-white text-black flex items-center justify-center font-display text-xs sm:text-sm tracking-[0.1em] uppercase font-semibold hover:bg-white/80 transition-all duration-500 shadow-2xl cursor-pointer pointer-events-auto"
             >
               Get in touch
             </motion.a>
@@ -82,12 +81,12 @@ export default function Contact() {
         </div>
 
         {/* Action pills (Email and Phone buttons) */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-28">
+        <div className="flex flex-col sm:flex-row gap-4 mb-28 relative z-10">
           <a 
-            href="mailto:hello@duta1.com"
+            href="mailto:dutaalamin23@gmail.com"
             className="px-8 py-5 border border-white/15 rounded-full text-xs text-white/80 hover:text-white hover:border-white transition-all duration-300 font-light tracking-wide text-center sm:text-left cursor-pointer"
           >
-            hello@duta1.com
+            dutaalamin23@gmail.com
           </a>
           <a 
             href="https://linkedin.com/in/dutaalamin"
@@ -124,7 +123,7 @@ export default function Contact() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-white/50 hover:text-[#5ce1e6] transition-colors duration-300 font-light"
+                  className="text-xs text-white/50 hover:text-white transition-colors duration-300 font-light"
                 >
                   {social.label}
                 </a>
