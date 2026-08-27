@@ -38,12 +38,8 @@ export default function Contact() {
       {/* Container matching Dennis Snellenberg style */}
       <div className="max-w-7xl mx-auto relative">
         
-        {/* Header Block with Avatar and Heading */}
+        {/* Header Block with Heading */}
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 mb-16 relative">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#161616] border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
-            <img src="/images/duta.png" alt="Duta Alamin" className="w-full h-full object-cover" />
-          </div>
-          
           <div className="flex items-end justify-between w-full">
             <h2 className="font-display text-4xl sm:text-6xl lg:text-8xl font-light text-white leading-none tracking-wide uppercase">
               Let's work
