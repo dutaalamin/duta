@@ -27,7 +27,7 @@ const projects = [
     image: '/images/projects/bungacerita.png',
   },
   {
-    title: 'Web Portfolio',
+    title: 'Duta',
     category: 'Design & Development',
     role: 'Personal Portfolio v1',
     year: '2024',
