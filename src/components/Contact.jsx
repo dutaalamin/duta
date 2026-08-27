@@ -50,13 +50,6 @@ export default function Contact() {
               <br />
               together
             </h2>
-            
-            {/* Minimal Arrow indicator */}
-            <div className="hidden sm:block text-white mb-3 hover:text-white/80 transition-colors duration-300">
-              <svg width="32" height="32" viewBox="0 0 16 16" fill="none">
-                <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
           </div>
         </div>
 
