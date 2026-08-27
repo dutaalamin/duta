@@ -27,6 +27,14 @@ const projects = [
     image: '/images/projects/bungacerita.png',
   },
   {
+    title: 'Web Portfolio',
+    category: 'Design & Development',
+    role: 'Personal Portfolio v1',
+    year: '2024',
+    url: 'https://duta23.vercel.app/',
+    image: '/images/projects/duta1.png',
+  },
+  {
     title: 'Bravo',
     category: 'Interaction & Development',
     role: 'AI-powered marketing platform',
