@@ -46,7 +46,7 @@ export default function Hero() {
       {/* Floating Location Pill Left (Sticking to the left edge like Dennis, but custom monochrome style) */}
       <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-3 sm:gap-4 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-8 py-2.5 sm:py-3 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
         <div className="flex flex-col items-start leading-none">
-          <span className="text-[8px] tracking-[0.2em] uppercase text-white/30 mb-0.5 sm:mb-1 font-display">Located in</span>
+          <span className="text-[8px] tracking-[0.2em] uppercase text-white mb-0.5 sm:mb-1 font-display">Located in</span>
           <span className="text-[11px] sm:text-sm text-white font-light">Indonesia</span>
         </div>
         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative overflow-hidden shrink-0">
