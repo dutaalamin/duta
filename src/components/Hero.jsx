@@ -59,7 +59,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
-      <div className="absolute top-[18%] sm:top-[26%] md:top-[38%] right-4 sm:right-8 md:right-16 lg:right-28 flex flex-col items-start gap-2 sm:gap-4 md:gap-5 z-20 pointer-events-none">
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-4 sm:right-8 md:right-16 lg:right-28 flex flex-col items-start gap-2 sm:gap-4 md:gap-5 z-20 pointer-events-none">
         <svg width="20" height="20" className="sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <line x1="7" y1="7" x2="17" y2="17"></line>
           <polyline points="17 7 17 17 7 17"></polyline>
