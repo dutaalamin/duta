@@ -77,7 +77,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-lg text-white/70 leading-relaxed font-light"
           >
-            I’m a Software Engineer with a versatile background spanning ERP systems, industrial automation, IT operations, and web development. I focus on building reliable, high-performance digital solutions that solve real-world business challenges and streamline complex workflows.
+            I’m a Software Engineer specializing in building scalable enterprise architectures, high-performance web applications, and robust digital solutions that solve complex engineering challenges.
           </motion.p>
 
           <motion.p
@@ -86,7 +86,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-sm text-white/40 leading-relaxed font-light"
           >
-            Skilled in full-stack engineering, system troubleshooting, database optimization, and application maintenance. Whether designing scalable web architectures, maintaining enterprise applications, or writing process logic for industrial systems, I leverage technology to drive efficiency and ensure system reliability.
+            I hold a Bachelor of Informatics from UPN Veteran Yogyakarta. During my studies, I researched deep learning architectures, building a CNN model for real-time Mount Merapi volcanic activity classification. I’m deeply passionate about solving complex problems, database optimization, and high-performance system design.
           </motion.p>
         </div>
 
