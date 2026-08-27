@@ -1,31 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
-  const [time, setTime] = useState('');
-
-  // Dynamically calculate GMT+7 (WIB) time for the hero clock
-  useEffect(() => {
-    const updateTime = () => {
-      const date = new Date();
-      const utc = date.getTime() + date.getTimezoneOffset() * 60000;
-      const gmt7Date = new Date(utc + 3600000 * 7);
-      
-      let hours = gmt7Date.getHours();
-      const minutes = String(gmt7Date.getMinutes()).padStart(2, '0');
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-      const formattedHours = String(hours).padStart(2, '0');
-      
-      setTime(`${formattedHours}:${minutes} ${ampm}`);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section 
       id="home" 
@@ -67,17 +43,10 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Floating Location & Time Left (Balancing the layout beautifully) */}
+      {/* Floating Location Left */}
       <div className="absolute top-[18%] sm:top-[26%] md:top-[38%] left-4 sm:left-8 md:left-16 lg:left-28 flex flex-col items-start gap-1 sm:gap-2 z-20 pointer-events-none">
         <span className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-white/40 font-display">Based In</span>
-        <span className="text-xs sm:text-base text-white/80 font-light">Indonesia</span>
-        <div className="flex items-center gap-2 mt-1">
-          <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500"></span>
-          </span>
-          <span className="text-[11px] sm:text-xs text-white/60 font-mono tracking-wide">{time} GMT+7</span>
-        </div>
+        <span className="text-xs sm:text-base md:text-lg text-white font-light">Indonesia</span>
       </div>
 
       {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
