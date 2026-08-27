@@ -67,7 +67,7 @@ export default function AboutPage() {
             </div>
             <div>
               <h2 className="text-xl font-light text-white">Software Engineer</h2>
-              <p className="text-xs text-white/30 tracking-widest uppercase">Banten, Indonesia</p>
+              <p className="text-xs text-white/30 tracking-widest uppercase">Indonesia</p>
             </div>
           </motion.div>
 
