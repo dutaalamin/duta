@@ -30,7 +30,7 @@ export default function Navbar({ currentView, setView }) {
         }}
         className="font-display text-sm tracking-[0.25em] text-white hover:text-white/70 transition-colors duration-300 uppercase cursor-pointer"
       >
-        © D
+        © Code by Duta
       </button>
 
       <div className="flex gap-8 md:gap-12">
