@@ -77,7 +77,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-lg text-white/70 leading-relaxed font-light"
           >
-            I’m a Software Engineer specializing in building scalable enterprise architectures, high-performance web applications, and intelligent, AI-powered systems that solve complex engineering challenges.
+            I’m a Software Engineer with experience in ERP systems and factory automation. Currently a Factory Automation Engineer at POSCO DX, bridging the gap between software development and industrial operations to build reliable enterprise solutions.
           </motion.p>
 
           <motion.p
