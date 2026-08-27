@@ -6,8 +6,11 @@ export default function Navbar({ currentView, setView }) {
     if (currentView !== 'home') {
       setView('home');
       setTimeout(() => {
-        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        const el = document.getElementById('contact');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 550);
     } else {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     }
