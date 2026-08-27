@@ -43,10 +43,19 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Floating Location Left */}
-      <div className="absolute top-[18%] sm:top-[26%] md:top-[38%] left-4 sm:left-8 md:left-16 lg:left-28 flex flex-col items-start gap-1 sm:gap-2 z-20 pointer-events-none">
-        <span className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-white/40 font-display">Based In</span>
-        <span className="text-xs sm:text-base md:text-lg text-white font-light">Indonesia</span>
+      {/* Floating Location Pill Left (Sticking to the left edge like Dennis, but custom monochrome style) */}
+      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-3 sm:gap-4 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-8 py-2.5 sm:py-3 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
+        <div className="flex flex-col items-start leading-none">
+          <span className="text-[8px] tracking-[0.2em] uppercase text-white/30 mb-0.5 sm:mb-1 font-display">Located in</span>
+          <span className="text-[11px] sm:text-sm text-white font-light">Indonesia</span>
+        </div>
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative overflow-hidden shrink-0">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="animate-spin-slow opacity-60">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+        </div>
       </div>
 
       {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
