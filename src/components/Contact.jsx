@@ -29,7 +29,7 @@ export default function Contact() {
 
   const socials = [
     { label: 'LinkedIn', href: 'https://linkedin.com/in/dutaalamin' },
-    { label: 'Instagram', href: 'https://instagram.com/dutaalamin' }
+    { label: 'Instagram', href: 'https://instagram.com/2duta' }
   ];
 
   return (
@@ -73,21 +73,15 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Action pills (Email and Phone buttons) */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-28 relative z-10">
+        {/* Email link with elegant hover underline animation */}
+        <div className="mb-28 relative z-10 flex flex-col items-start gap-2">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-white/30 font-display">Write me an email</span>
           <a 
             href="mailto:dutaalamin23@gmail.com"
-            className="px-8 py-5 border border-white/15 rounded-full text-xs text-white/80 hover:text-white hover:border-white transition-all duration-300 font-light tracking-wide text-center sm:text-left cursor-pointer"
+            className="text-xl sm:text-3xl font-light text-white hover:text-white/70 transition-all duration-300 relative group py-1"
           >
             dutaalamin23@gmail.com
-          </a>
-          <a 
-            href="https://linkedin.com/in/dutaalamin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-5 border border-white/15 rounded-full text-xs text-white/80 hover:text-white hover:border-white transition-all duration-300 font-light tracking-wide text-center sm:text-left cursor-pointer"
-          >
-            Connect on LinkedIn
+            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20 scale-x-100 group-hover:bg-white transition-all duration-300 origin-left" />
           </a>
         </div>
 
