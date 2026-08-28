@@ -9,14 +9,40 @@ import ProjectsList from './components/ProjectsList';
 import AboutPage from './components/AboutPage';
 import Contact from './components/Contact';
 import ContactPage from './components/ContactPage';
+import PageTransition from './components/PageTransition';
 
 export default function App() {
   const [showPreloader, setShowPreloader] = useState(true);
   const [view, setView] = useState('home'); // 'home', 'about', or 'contact'
+  const [transition, setTransition] = useState({ isActive: false, label: '' });
+
+  const handleNavigate = (targetView) => {
+    if (targetView === view) return;
+
+    let label = 'Home';
+    if (targetView === 'about') label = 'About';
+    if (targetView === 'contact') label = 'Contact';
+
+    // 1. Activate transition overlay (slides in)
+    setTransition({ isActive: true, label });
+
+    // 2. Switch view under the hood while covered
+    setTimeout(() => {
+      setView(targetView);
+      window.scrollTo({ top: 0 });
+    }, 500);
+
+    // 3. Deactivate overlay (slides out)
+    setTimeout(() => {
+      setTransition({ isActive: false, label: '' });
+    }, 1000);
+  };
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-slate-100 font-sans selection:bg-[#5ce1e6] selection:text-dark">
-      <Analytics />      
+      <Analytics />
+      <PageTransition isActive={transition.isActive} label={transition.label} />
+      
       {/* Preloader */}
       <AnimatePresence>
         {showPreloader && (
@@ -32,7 +58,7 @@ export default function App() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Header Navigation */}
-          <Navbar currentView={view} setView={setView} />
+          <Navbar currentView={view} setView={handleNavigate} />
 
           {/* Conditional Views with Framer Motion transitions */}
           <AnimatePresence mode="wait">
@@ -45,9 +71,9 @@ export default function App() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Hero />
-                <Intro setView={setView} />
+                <Intro setView={handleNavigate} />
                 <ProjectsList />
-                <Contact setView={setView} />
+                <Contact setView={handleNavigate} />
               </motion.div>
             ) : view === 'about' ? (
               <motion.div
@@ -58,7 +84,7 @@ export default function App() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
                 <AboutPage />
-                <Contact setView={setView} />
+                <Contact setView={handleNavigate} />
               </motion.div>
             ) : (
               <motion.div
