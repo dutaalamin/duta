@@ -51,7 +51,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="lg:col-span-4 hidden sm:block lg:pl-12"
         >
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-white/10 bg-[#111]">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border border-white/10 bg-[#111]">
             <img src="/images/duta.png" alt="Duta Alamin" className="w-full h-full object-cover" />
           </div>
         </motion.div>
@@ -199,6 +199,9 @@ export default function ContactPage() {
           <div className="flex flex-col gap-3">
             <span className="text-[10px] tracking-[0.2em] uppercase text-white/30 font-display">Socials</span>
             <div className="flex flex-col gap-2">
+              <a href="https://linkedin.com/in/dutaalamin" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors duration-300 font-light">
+                LinkedIn
+              </a>
               <a href="https://instagram.com/2duta" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors duration-300 font-light">
                 Instagram
               </a>
