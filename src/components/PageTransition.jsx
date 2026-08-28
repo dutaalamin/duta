@@ -17,7 +17,7 @@ export default function PageTransition({ isActive, label }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ delay: 0.1, duration: 0.2 }}
-            className="text-white text-2xl sm:text-3xl font-display font-light uppercase tracking-[0.25em]"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-wide"
           >
             {label}
           </motion.span>
