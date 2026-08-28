@@ -100,7 +100,7 @@ export default function AboutPage() {
             transition={{ delay: 0 }}
             className="border-t border-white/10 pt-8 pb-12 md:pr-8"
           >
-            <span className="text-[11px] tracking-widest text-white/20 font-mono block mb-8">01</span>
+
             <h3 className="text-xl sm:text-2xl text-white font-medium mb-5 tracking-tight">Design</h3>
             <p className="text-[13px] text-white/35 leading-[1.8] font-light">
               With a solid track record in designing interfaces, I deliver strong and user-friendly digital designs that align with brand identity and business goals.
@@ -115,7 +115,7 @@ export default function AboutPage() {
             transition={{ delay: 0.1 }}
             className="border-t border-white/10 pt-8 pb-12 md:px-8"
           >
-            <span className="text-[11px] tracking-widest text-white/20 font-mono block mb-8">02</span>
+
             <h3 className="text-xl sm:text-2xl text-white font-medium mb-5 tracking-tight">Development</h3>
             <p className="text-[13px] text-white/35 leading-[1.8] font-light">
               I build scalable web applications from scratch that fit seamlessly with design. My focus is on performance, clean architecture, database optimization, and reliable system logic.
@@ -130,10 +130,7 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="border-t border-white/10 pt-8 pb-12 md:pl-8"
           >
-            <span className="text-[11px] tracking-widest text-white/20 font-mono block mb-8">03</span>
-            <h3 className="text-xl sm:text-2xl text-white font-medium mb-5 tracking-tight flex items-center gap-2">
-              <span>✦</span> The full package
-            </h3>
+            <h3 className="text-xl sm:text-2xl text-white font-medium mb-5 tracking-tight">The full package</h3>
             <p className="text-[13px] text-white/35 leading-[1.8] font-light">
               A complete digital product from concept to deployment. My engineering background and design sensibility enable me to create kick-ass projects that perform at every level.
             </p>
