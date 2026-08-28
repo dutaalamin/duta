@@ -32,12 +32,12 @@ export default function App() {
     setTimeout(() => {
       setView(targetView);
       window.scrollTo({ top: 0 });
-    }, 500);
+    }, 400);
 
     // 3. Deactivate overlay (slides out)
     setTimeout(() => {
       setTransition({ isActive: false, label: '' });
-    }, 1000);
+    }, 800);
   };
 
   return (
