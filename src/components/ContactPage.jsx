@@ -35,7 +35,7 @@ export default function ContactPage() {
     <div className="relative min-h-screen bg-[#0a0a0a] pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       
       {/* Header with avatar — same grid as below so avatar aligns above Contact Details */}
-      <div className="pt-8 md:pt-16 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+      <div className="pt-8 md:pt-16 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-end">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
