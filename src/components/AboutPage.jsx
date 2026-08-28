@@ -87,7 +87,7 @@ export default function AboutPage() {
           viewport={{ once: true }}
           className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white mb-16 md:mb-20 tracking-tight"
         >
-          I can help you with ..
+          I can help you with
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
