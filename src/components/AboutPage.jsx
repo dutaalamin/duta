@@ -42,24 +42,21 @@ export default function AboutPage() {
       <div className="px-6 md:px-12 lg:px-20 max-w-7xl mx-auto mt-20 md:mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           
-          {/* Left: Arrow + Bio */}
+          {/* Left: Bio */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="flex gap-5 items-start"
+            className="flex flex-col gap-6"
           >
-            <span className="text-lg text-white/40 pt-1 shrink-0 select-none">→</span>
-            <div className="flex flex-col gap-6">
-              <p className="text-sm sm:text-[15px] text-white/60 leading-[1.8] font-light">
-                I help companies from all over the world with tailor-made software solutions. Combining clean code, system engineering, and modern design to build digital products that truly perform.
-              </p>
-              <p className="text-sm sm:text-[15px] text-white/60 leading-[1.8] font-light">
-                With each project, I push my work to new horizons, always putting quality first.
-              </p>
-              <span className="text-[11px] tracking-[0.2em] uppercase text-white/25 font-display mt-2">Always exploring.</span>
-            </div>
+            <p className="text-sm sm:text-[15px] text-white/60 leading-[1.8] font-light">
+              I help companies from all over the world with tailor-made software solutions. Combining clean code, system engineering, and modern design to build digital products that truly perform.
+            </p>
+            <p className="text-sm sm:text-[15px] text-white/60 leading-[1.8] font-light">
+              With each project, I push my work to new horizons, always putting quality first.
+            </p>
+            <span className="text-[11px] tracking-[0.2em] uppercase text-white/25 font-display mt-2">Always exploring.</span>
           </motion.div>
 
           {/* Right: Portrait Photo */}
