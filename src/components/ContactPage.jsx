@@ -34,13 +34,13 @@ export default function ContactPage() {
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       
-      {/* Header with avatar */}
-      <div className="pt-8 md:pt-16 pb-16 flex items-start justify-between gap-8">
+      {/* Header with avatar — same grid as below so avatar aligns above Contact Details */}
+      <div className="pt-8 md:pt-16 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] tracking-tight"
+          className="lg:col-span-8 font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] tracking-tight"
         >
           Let's start a<br />project together
         </motion.h1>
@@ -49,7 +49,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="shrink-0 hidden sm:block"
+          className="lg:col-span-4 hidden sm:block lg:pl-12"
         >
           <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-white/10 bg-[#111]">
             <img src="/images/duta.png" alt="Duta Alamin" className="w-full h-full object-cover" />
