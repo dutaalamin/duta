@@ -2,33 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
-  const capabilities = [
-    {
-      num: '01',
-      title: 'Web Engineering & Development',
-      description: 'Developing fast, responsive, and interactive web platforms from scratch. Focused on clean code, smooth animations, and creating intuitive user experiences that perform seamlessly on all devices.'
-    },
-    {
-      num: '02',
-      title: 'Backend & Database Systems',
-      description: 'Designing scalable database architectures, optimizing query performance, and building secure, high-performance API integrations to support complex business operations.'
-    },
-    {
-      num: '03',
-      title: 'Enterprise Automation & Logic',
-      description: 'Developing custom automation scripts, integrating enterprise system modules, and writing reliable process logic to automate manual tasks and improve overall system efficiency.'
-    },
-    {
-      num: '04',
-      title: 'AI & Data-Driven Logic',
-      description: 'Leveraging computer science fundamentals to integrate intelligent workflows and data classification systems, helping businesses utilize automation to make smarter choices.'
-    }
-  ];
-
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] pt-32 pb-32 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       
-      {/* Editorial Headline Title (Dennis Style) */}
+      {/* Section 1: Editorial Headline Title (Dennis Style) */}
       <div className="pt-8 md:pt-16 pb-6">
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
@@ -54,7 +31,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Intro Block: Arrow + Text on Left, Large Grayscale Image on Right */}
+      {/* Intro Block: Arrow + Text on Left, Wide Landscape Image on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Left column: Arrow & Paragraph */}
@@ -71,9 +48,10 @@ export default function AboutPage() {
         {/* Right column: Wide Grayscale Photo */}
         <div className="lg:col-span-8 w-full">
           <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden bg-[#161616] border border-white/10 relative group shadow-2xl">
+            {/* Using projects/draken.png as a wide editorial workspace header since it represents software dev */}
             <img 
-              src="/images/duta.png" 
-              alt="Duta Alamin" 
+              src="/images/projects/draken.png" 
+              alt="Duta Alamin Workspace" 
               className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700 ease-out" 
             />
           </div>
@@ -81,39 +59,92 @@ export default function AboutPage() {
 
       </div>
 
-      {/* Capabilities Section (Dennis Style Grid Layout) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-32 md:mt-44 border-t border-white/10 pt-16">
-        
-        {/* Section title left */}
-        <div className="lg:col-span-4">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-white/30 font-display block">Capabilities</span>
-        </div>
+      {/* Section 2: "I can help you with .." (Dennis Style 3-Column Services) */}
+      <div className="mt-32 md:mt-44">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-display text-3xl sm:text-5xl font-light text-white mb-16 tracking-wide"
+        >
+          I can help you with ..
+        </motion.h2>
 
-        {/* Capabilities list right */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16">
-          {capabilities.map((cap) => (
-            <div key={cap.title} className="flex flex-col gap-4 border-b border-white/5 pb-8">
-              <span className="text-[10px] tracking-widest text-white/20 font-mono font-light">{cap.num}</span>
-              <h3 className="text-lg text-white font-medium">{cap.title}</h3>
-              <p className="text-xs text-white/40 leading-relaxed font-light">
-                {cap.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+          
+          {/* Column 01: Design */}
+          <div className="border-t border-white/15 pt-8 flex flex-col gap-6">
+            <span className="text-[11px] tracking-widest text-white/20 font-mono">01</span>
+            <h3 className="text-xl sm:text-2xl text-white font-medium">Design</h3>
+            <p className="text-xs sm:text-sm text-white/40 leading-relaxed font-light">
+              Designing clean, modern, and interactive digital interfaces. I craft user-focused designs that align seamlessly with technology to ensure your digital product stands out.
+            </p>
+          </div>
 
+          {/* Column 02: Development */}
+          <div className="border-t border-white/15 pt-8 flex flex-col gap-6">
+            <span className="text-[11px] tracking-widest text-white/20 font-mono">02</span>
+            <h3 className="text-xl sm:text-2xl text-white font-medium">Development</h3>
+            <p className="text-xs sm:text-sm text-white/40 leading-relaxed font-light">
+              Building fast, reliable, and scalable web applications from scratch. Specialized in clean React code, secure backend integration, database optimization, and system logic.
+            </p>
+          </div>
+
+          {/* Column 03: The Full Package */}
+          <div className="border-t border-white/15 pt-8 flex flex-col gap-6">
+            <span className="text-[11px] tracking-widest text-white/20 font-mono">03</span>
+            <h3 className="text-xl sm:text-2xl text-white font-medium flex items-center gap-2">
+              <span className="text-white">✦</span> The full package
+            </h3>
+            <p className="text-xs sm:text-sm text-white/40 leading-relaxed font-light">
+              A complete application from initial database concept to interactive frontend deployment. Handling both engineering and design enables me to build seamless digital solutions.
+            </p>
+          </div>
+
+        </div>
       </div>
 
-      {/* Philosophy Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-28 border-t border-white/5 pt-16">
-        <div className="lg:col-span-4">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-white/30 font-display block">My Philosophy</span>
+      {/* Section 3: AI & System Engineering Highlights (Dennis Awwwards Judge Style) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mt-36 md:mt-48 items-center border-t border-white/5 pt-20">
+        
+        {/* Left Side: Portrait Image Card */}
+        <div className="lg:col-span-5 flex justify-center lg:justify-start">
+          <div className="w-64 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden bg-[#161616] border border-white/10 shadow-2xl relative group">
+            <img 
+              src="/images/duta.png" 
+              alt="Duta Alamin Portrait" 
+              className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" 
+            />
+          </div>
         </div>
-        <div className="lg:col-span-8">
-          <p className="text-sm sm:text-base text-white/40 leading-relaxed font-light max-w-2xl">
-            I believe in writing code that is clean, maintainable, and optimized for performance. I approach software development not just as writing syntax, but as designing robust architectures that directly drive business efficiency and user satisfaction.
+
+        {/* Right Side: Rotating Badge & Editorial Text */}
+        <div className="lg:col-span-7 flex flex-col items-start gap-6">
+          
+          {/* Rotating Text Badge */}
+          <div className="relative w-28 h-28 flex items-center justify-center select-none">
+            <svg viewBox="0 0 100 100" className="w-full h-full animate-[spin_20s_linear_infinite] absolute">
+              <path id="textPath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+              <text className="text-[6px] fill-white/30 tracking-[0.15em] uppercase font-mono font-medium">
+                <textPath href="#textPath" startOffset="0%">
+                  • software engineer • automation • intelligent systems
+                </textPath>
+              </text>
+            </svg>
+            <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+              <span className="text-xs text-white/50 font-display font-light">DA</span>
+            </div>
+          </div>
+
+          <h3 className="font-display text-2xl sm:text-4xl text-white font-medium tracking-wide">
+            AI Research &amp; System Engineering
+          </h3>
+
+          <p className="text-xs sm:text-sm text-white/40 leading-relaxed font-light">
+            I specialize in bridging the gap between deep learning model architecture, database systems, and modern web applications. From researching deep learning architectures (CNN) for volcanic activity classification to developing high-performance enterprise systems, I leverage technology to drive efficiency and system reliability.
           </p>
         </div>
+
       </div>
 
     </div>
