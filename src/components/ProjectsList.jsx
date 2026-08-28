@@ -108,9 +108,11 @@ const projects = [
   }
 ];
 
-export default function ProjectsList() {
+export default function ProjectsList({ limit, setView }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   
+  const visibleProjects = limit ? projects.slice(0, limit) : projects;
+
   // Motion values for smooth cursor tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -153,7 +155,7 @@ export default function ProjectsList() {
 
       {/* Table-like Project List */}
       <div className="relative border-t border-white/20">
-        {projects.map((project, index) => (
+        {visibleProjects.map((project, index) => (
           <a
             key={project.title}
             href={project.url}
@@ -182,6 +184,20 @@ export default function ProjectsList() {
           </a>
         ))}
       </div>
+
+      {limit && setView && (
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setView('work')}
+            className="group px-8 py-3.5 rounded-full border border-white/20 text-xs font-display tracking-[0.2em] uppercase text-white hover:bg-white hover:text-black transition-all duration-500 cursor-pointer flex items-center gap-2"
+          >
+            More work
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      )}
 
       {/* Floating Mockup Slider Panel (Dennis Snellenberg Style) */}
       <AnimatePresence>

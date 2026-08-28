@@ -21,12 +21,9 @@ export default function Navbar({ currentView, setView }) {
 
       <div className="flex gap-8 md:gap-12">
         <button
-          onClick={() => {
-            setView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onClick={() => setView('work')}
           className={`font-sans text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 cursor-pointer ${
-            currentView === 'home' ? 'text-white font-medium' : 'text-white/40 hover:text-white'
+            currentView === 'work' ? 'text-white font-medium' : 'text-white/40 hover:text-white'
           }`}
         >
           Work

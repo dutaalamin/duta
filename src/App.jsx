@@ -10,16 +10,18 @@ import AboutPage from './components/AboutPage';
 import Contact from './components/Contact';
 import ContactPage from './components/ContactPage';
 import PageTransition from './components/PageTransition';
+import WorkPage from './components/WorkPage';
 
 export default function App() {
   const [showPreloader, setShowPreloader] = useState(true);
-  const [view, setView] = useState('home'); // 'home', 'about', or 'contact'
+  const [view, setView] = useState('home'); // 'home', 'work', 'about', or 'contact'
   const [transition, setTransition] = useState({ isActive: false, label: '' });
 
   const handleNavigate = (targetView) => {
     if (targetView === view) return;
 
     let label = 'Home';
+    if (targetView === 'work') label = 'Work';
     if (targetView === 'about') label = 'About';
     if (targetView === 'contact') label = 'Contact';
 
@@ -72,7 +74,18 @@ export default function App() {
               >
                 <Hero />
                 <Intro setView={handleNavigate} />
-                <ProjectsList />
+                <ProjectsList limit={4} setView={handleNavigate} />
+                <Contact setView={handleNavigate} />
+              </motion.div>
+            ) : view === 'work' ? (
+              <motion.div
+                key="work-view"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <WorkPage setView={handleNavigate} />
                 <Contact setView={handleNavigate} />
               </motion.div>
             ) : view === 'about' ? (
