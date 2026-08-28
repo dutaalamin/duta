@@ -10,160 +10,169 @@ export default function ContactPage() {
     message: ''
   });
 
+  const [focused, setFocused] = useState(null);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Open user's email client pre-filled with form details as fallback,
-    // or log for now. Very clean client-side solution!
     const subject = `Project Inquiry from ${formData.name || 'Client'}`;
     const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.org}%0D%0AServices: ${formData.services}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
     window.location.href = `mailto:dutaalamin23@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   };
 
+  const inputClass = (fieldName) => `
+    w-full bg-[#141414] border rounded-lg px-4 py-3 text-white text-sm font-light
+    placeholder-white/25 mt-3 transition-all duration-300 outline-none
+    ${focused === fieldName 
+      ? 'border-white/40 shadow-[0_0_0_1px_rgba(255,255,255,0.1)]' 
+      : 'border-white/8 hover:border-white/20'}
+  `;
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       
-      {/* Upper header section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-8 md:pt-16 pb-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-8"
-        >
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] tracking-tight">
-            Let's start a<br />project together
-          </h1>
-        </motion.div>
-
-        {/* Small Avatar on Right */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:col-span-4 flex lg:justify-end"
-        >
-          <div className="w-20 h-20 rounded-full border border-white/10 overflow-hidden bg-[#111] shrink-0">
-            <img src="/images/duta2.webp" alt="Duta Alamin" className="w-full h-full object-cover" />
-          </div>
-        </motion.div>
-      </div>
+      {/* Header */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="pt-8 md:pt-16 pb-16"
+      >
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] tracking-tight">
+          Let's start a<br />project together
+        </h1>
+      </motion.div>
 
       {/* Main Grid: Form Left, Contact Info Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mt-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
         
-        {/* Left Side: Interactive Contact Form */}
+        {/* Left Side: Contact Form */}
         <motion.form 
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="lg:col-span-8 flex flex-col gap-12"
+          className="lg:col-span-8 flex flex-col gap-8"
         >
           
           {/* Input 1: Name */}
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-8 group">
-            <div className="flex items-start gap-4">
-              <span className="text-[10px] tracking-widest text-white/20 font-mono pt-1">01</span>
-              <div className="flex flex-col gap-2 w-full">
-                <label className="text-lg sm:text-xl text-white font-light">What's your name?</label>
-                <input 
-                  type="text" 
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="John Doe *" 
-                  required
-                  className="bg-transparent border-0 p-0 text-white placeholder-white/20 text-sm focus:ring-0 focus:outline-none w-full pb-2 mt-2 font-light"
-                />
-              </div>
+          <div className="flex items-start gap-4">
+            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">01</span>
+            <div className="flex flex-col w-full">
+              <label className="text-base sm:text-lg text-white font-light">What's your name?</label>
+              <input 
+                type="text" 
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                onFocus={() => setFocused('name')}
+                onBlur={() => setFocused(null)}
+                placeholder="John Doe *" 
+                required
+                className={inputClass('name')}
+              />
             </div>
           </div>
+
+          {/* Divider */}
+          <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 2: Email */}
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-8 group">
-            <div className="flex items-start gap-4">
-              <span className="text-[10px] tracking-widest text-white/20 font-mono pt-1">02</span>
-              <div className="flex flex-col gap-2 w-full">
-                <label className="text-lg sm:text-xl text-white font-light">What's your email?</label>
-                <input 
-                  type="email" 
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="john@doe.com *" 
-                  required
-                  className="bg-transparent border-0 p-0 text-white placeholder-white/20 text-sm focus:ring-0 focus:outline-none w-full pb-2 mt-2 font-light"
-                />
-              </div>
+          <div className="flex items-start gap-4">
+            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">02</span>
+            <div className="flex flex-col w-full">
+              <label className="text-base sm:text-lg text-white font-light">What's your email?</label>
+              <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                onFocus={() => setFocused('email')}
+                onBlur={() => setFocused(null)}
+                placeholder="john@doe.com *" 
+                required
+                className={inputClass('email')}
+              />
             </div>
           </div>
+
+          {/* Divider */}
+          <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 3: Organization */}
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-8 group">
-            <div className="flex items-start gap-4">
-              <span className="text-[10px] tracking-widest text-white/20 font-mono pt-1">03</span>
-              <div className="flex flex-col gap-2 w-full">
-                <label className="text-lg sm:text-xl text-white font-light">What's the name of your organization?</label>
-                <input 
-                  type="text" 
-                  name="org"
-                  value={formData.org}
-                  onChange={handleChange}
-                  placeholder="John &amp; Doe ®" 
-                  className="bg-transparent border-0 p-0 text-white placeholder-white/20 text-sm focus:ring-0 focus:outline-none w-full pb-2 mt-2 font-light"
-                />
-              </div>
+          <div className="flex items-start gap-4">
+            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">03</span>
+            <div className="flex flex-col w-full">
+              <label className="text-base sm:text-lg text-white font-light">What's the name of your organization?</label>
+              <input 
+                type="text" 
+                name="org"
+                value={formData.org}
+                onChange={handleChange}
+                onFocus={() => setFocused('org')}
+                onBlur={() => setFocused(null)}
+                placeholder="John & Doe ®" 
+                className={inputClass('org')}
+              />
             </div>
           </div>
+
+          {/* Divider */}
+          <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 4: Services */}
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-8 group">
-            <div className="flex items-start gap-4">
-              <span className="text-[10px] tracking-widest text-white/20 font-mono pt-1">04</span>
-              <div className="flex flex-col gap-2 w-full">
-                <label className="text-lg sm:text-xl text-white font-light">What services are you looking for?</label>
-                <input 
-                  type="text" 
-                  name="services"
-                  value={formData.services}
-                  onChange={handleChange}
-                  placeholder="Web Design, Web Development ..." 
-                  className="bg-transparent border-0 p-0 text-white placeholder-white/20 text-sm focus:ring-0 focus:outline-none w-full pb-2 mt-2 font-light"
-                />
-              </div>
+          <div className="flex items-start gap-4">
+            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">04</span>
+            <div className="flex flex-col w-full">
+              <label className="text-base sm:text-lg text-white font-light">What services are you looking for?</label>
+              <input 
+                type="text" 
+                name="services"
+                value={formData.services}
+                onChange={handleChange}
+                onFocus={() => setFocused('services')}
+                onBlur={() => setFocused(null)}
+                placeholder="Web Design, Web Development ..." 
+                className={inputClass('services')}
+              />
             </div>
           </div>
+
+          {/* Divider */}
+          <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 5: Message */}
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-8 border-b pb-8 group">
-            <div className="flex items-start gap-4">
-              <span className="text-[10px] tracking-widest text-white/20 font-mono pt-1">05</span>
-              <div className="flex flex-col gap-2 w-full">
-                <label className="text-lg sm:text-xl text-white font-light">Your message</label>
-                <textarea 
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Hello Duta, can you help me with ... *" 
-                  required
-                  rows="3"
-                  className="bg-transparent border-0 p-0 text-white placeholder-white/20 text-sm focus:ring-0 focus:outline-none w-full pb-2 mt-2 font-light resize-none"
-                />
-              </div>
+          <div className="flex items-start gap-4">
+            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">05</span>
+            <div className="flex flex-col w-full">
+              <label className="text-base sm:text-lg text-white font-light">Your message</label>
+              <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                onFocus={() => setFocused('message')}
+                onBlur={() => setFocused(null)}
+                placeholder="Hello Duta, can you help me with ... *" 
+                required
+                rows="4"
+                className={`${inputClass('message')} resize-none`}
+              />
             </div>
           </div>
 
-          {/* Circular Magnetic Submit Button */}
-          <div className="mt-8 flex justify-start">
+          {/* Send Button */}
+          <div className="mt-4 flex justify-start">
             <button 
               type="submit"
-              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#111111] border border-white/10 text-xs text-white/80 hover:text-white hover:bg-white hover:text-black transition-all duration-500 font-light tracking-widest uppercase cursor-pointer flex items-center justify-center shadow-lg"
+              className="group relative px-10 py-4 rounded-full bg-white text-black text-sm font-medium tracking-widest uppercase cursor-pointer hover:bg-white/90 transition-all duration-300 flex items-center gap-3"
             >
-              Send
+              Send it
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
           </div>
 
@@ -184,21 +193,16 @@ export default function ContactPage() {
             </a>
           </div>
 
-          {/* Location details */}
+          {/* Location */}
           <div className="flex flex-col gap-3">
             <span className="text-[10px] tracking-[0.2em] uppercase text-white/30 font-display">Location</span>
-            <span className="text-sm text-white/70 font-light">
-              Indonesia
-            </span>
+            <span className="text-sm text-white/70 font-light">Indonesia</span>
           </div>
 
-          {/* Socials details */}
+          {/* Socials */}
           <div className="flex flex-col gap-3">
             <span className="text-[10px] tracking-[0.2em] uppercase text-white/30 font-display">Socials</span>
             <div className="flex flex-col gap-2">
-              <a href="https://linkedin.com/in/dutaalamin" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors duration-300 font-light">
-                LinkedIn
-              </a>
               <a href="https://instagram.com/2duta" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors duration-300 font-light">
                 Instagram
               </a>
