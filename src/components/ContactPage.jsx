@@ -34,17 +34,28 @@ export default function ContactPage() {
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       
-      {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="pt-8 md:pt-16 pb-16"
-      >
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] tracking-tight">
+      {/* Header with avatar */}
+      <div className="pt-8 md:pt-16 pb-16 flex items-start justify-between gap-8">
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] tracking-tight"
+        >
           Let's start a<br />project together
-        </h1>
-      </motion.div>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="shrink-0 hidden sm:block"
+        >
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-white/10 bg-[#111]">
+            <img src="/images/duta.png" alt="Duta Alamin" className="w-full h-full object-cover" />
+          </div>
+        </motion.div>
+      </div>
 
       {/* Main Grid: Form Left, Contact Info Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
@@ -59,115 +70,100 @@ export default function ContactPage() {
         >
           
           {/* Input 1: Name */}
-          <div className="flex items-start gap-4">
-            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">01</span>
-            <div className="flex flex-col w-full">
-              <label className="text-base sm:text-lg text-white font-light">What's your name?</label>
-              <input 
-                type="text" 
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                onFocus={() => setFocused('name')}
-                onBlur={() => setFocused(null)}
-                placeholder="John Doe *" 
-                required
-                className={inputClass('name')}
-              />
-            </div>
+          <div className="flex flex-col">
+            <label className="text-base sm:text-lg text-white font-light">What's your name?</label>
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              onFocus={() => setFocused('name')}
+              onBlur={() => setFocused(null)}
+              placeholder="John Doe *" 
+              required
+              className={inputClass('name')}
+            />
           </div>
 
           {/* Divider */}
           <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 2: Email */}
-          <div className="flex items-start gap-4">
-            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">02</span>
-            <div className="flex flex-col w-full">
-              <label className="text-base sm:text-lg text-white font-light">What's your email?</label>
-              <input 
-                type="email" 
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                onFocus={() => setFocused('email')}
-                onBlur={() => setFocused(null)}
-                placeholder="john@doe.com *" 
-                required
-                className={inputClass('email')}
-              />
-            </div>
+          <div className="flex flex-col">
+            <label className="text-base sm:text-lg text-white font-light">What's your email?</label>
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              onFocus={() => setFocused('email')}
+              onBlur={() => setFocused(null)}
+              placeholder="john@doe.com *" 
+              required
+              className={inputClass('email')}
+            />
           </div>
 
           {/* Divider */}
           <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 3: Organization */}
-          <div className="flex items-start gap-4">
-            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">03</span>
-            <div className="flex flex-col w-full">
-              <label className="text-base sm:text-lg text-white font-light">What's the name of your organization?</label>
-              <input 
-                type="text" 
-                name="org"
-                value={formData.org}
-                onChange={handleChange}
-                onFocus={() => setFocused('org')}
-                onBlur={() => setFocused(null)}
-                placeholder="John & Doe ®" 
-                className={inputClass('org')}
-              />
-            </div>
+          <div className="flex flex-col">
+            <label className="text-base sm:text-lg text-white font-light">What's the name of your organization?</label>
+            <input 
+              type="text" 
+              name="org"
+              value={formData.org}
+              onChange={handleChange}
+              onFocus={() => setFocused('org')}
+              onBlur={() => setFocused(null)}
+              placeholder="John & Doe ®" 
+              className={inputClass('org')}
+            />
           </div>
 
           {/* Divider */}
           <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 4: Services */}
-          <div className="flex items-start gap-4">
-            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">04</span>
-            <div className="flex flex-col w-full">
-              <label className="text-base sm:text-lg text-white font-light">What services are you looking for?</label>
-              <input 
-                type="text" 
-                name="services"
-                value={formData.services}
-                onChange={handleChange}
-                onFocus={() => setFocused('services')}
-                onBlur={() => setFocused(null)}
-                placeholder="Web Design, Web Development ..." 
-                className={inputClass('services')}
-              />
-            </div>
+          <div className="flex flex-col">
+            <label className="text-base sm:text-lg text-white font-light">What services are you looking for?</label>
+            <input 
+              type="text" 
+              name="services"
+              value={formData.services}
+              onChange={handleChange}
+              onFocus={() => setFocused('services')}
+              onBlur={() => setFocused(null)}
+              placeholder="Web Design, Web Development ..." 
+              className={inputClass('services')}
+            />
           </div>
 
           {/* Divider */}
           <div className="w-full h-[1px] bg-white/5" />
 
           {/* Input 5: Message */}
-          <div className="flex items-start gap-4">
-            <span className="text-[10px] tracking-widest text-white/20 font-mono pt-4 mt-3 shrink-0">05</span>
-            <div className="flex flex-col w-full">
-              <label className="text-base sm:text-lg text-white font-light">Your message</label>
-              <textarea 
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                onFocus={() => setFocused('message')}
-                onBlur={() => setFocused(null)}
-                placeholder="Hello Duta, can you help me with ... *" 
-                required
-                rows="4"
-                className={`${inputClass('message')} resize-none`}
-              />
-            </div>
+          <div className="flex flex-col">
+            <label className="text-base sm:text-lg text-white font-light">Your message</label>
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              onFocus={() => setFocused('message')}
+              onBlur={() => setFocused(null)}
+              placeholder="Hello Duta, can you help me with ... *" 
+              required
+              rows="4"
+              className={`${inputClass('message')} resize-none`}
+            />
           </div>
 
           {/* Send Button */}
-          <div className="mt-4 flex justify-start">
+          <div className="mt-4">
             <button 
               type="submit"
-              className="group relative px-10 py-4 rounded-full bg-white text-black text-sm font-medium tracking-widest uppercase cursor-pointer hover:bg-white/90 transition-all duration-300 flex items-center gap-3"
+              className="group px-10 py-4 rounded-full bg-white text-black text-sm font-medium tracking-widest uppercase cursor-pointer hover:bg-white/90 transition-all duration-300 flex items-center gap-3"
             >
               Send it
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
