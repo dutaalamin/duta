@@ -2,20 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Navbar({ currentView, setView }) {
-  const handleContactClick = () => {
-    if (currentView !== 'home') {
-      setView('home');
-      setTimeout(() => {
-        const el = document.getElementById('contact');
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 550);
-    } else {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <motion.header 
       initial={{ opacity: 0, y: -20 }}
@@ -54,8 +40,10 @@ export default function Navbar({ currentView, setView }) {
           About
         </button>
         <button
-          onClick={handleContactClick}
-          className="font-sans text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-white transition-colors duration-300 cursor-pointer"
+          onClick={() => setView('contact')}
+          className={`font-sans text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 cursor-pointer ${
+            currentView === 'contact' ? 'text-white font-medium' : 'text-white/40 hover:text-white'
+          }`}
         >
           Contact
         </button>

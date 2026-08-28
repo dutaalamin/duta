@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export default function Contact() {
+export default function Contact({ setView }) {
   const [time, setTime] = useState('');
 
   // Dynamically calculate GMT+7 (WIB) time
@@ -16,7 +16,7 @@ export default function Contact() {
       const minutes = String(gmt7Date.getMinutes()).padStart(2, '0');
       const ampm = hours >= 12 ? 'PM' : 'AM';
       hours = hours % 12;
-      hours = hours ? hours : 12; // the hour '0' should be '12'
+      hours = hours ? hours : 12; // 0 should be 12
       const formattedHours = String(hours).padStart(2, '0');
       
       setTime(`${formattedHours}:${minutes} ${ampm} GMT+7`);
@@ -36,16 +36,27 @@ export default function Contact() {
     <section id="contact" className="relative bg-[#0e0e0e] pt-32 pb-12 px-6 md:px-12 lg:px-20 overflow-hidden">
       
       {/* Container matching Dennis Snellenberg style */}
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Header Block with Heading */}
+        {/* Header Block with Avatar and Heading */}
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10 mb-16 relative">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#161616] border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+            <img src="/images/duta2.webp" alt="Duta Alamin" className="w-full h-full object-cover" />
+          </div>
+          
           <div className="flex items-end justify-between w-full">
             <h2 className="font-display text-4xl sm:text-6xl lg:text-8xl font-light text-white leading-none tracking-wide uppercase">
               Let's work
               <br />
               together
             </h2>
+            
+            {/* Minimal Arrow indicator */}
+            <div className="hidden sm:block text-white mb-3 hover:text-white/80 transition-colors duration-300">
+              <svg width="32" height="32" viewBox="0 0 16 16" fill="none">
+                <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -55,8 +66,13 @@ export default function Contact() {
           
           {/* Circular Get In Touch Button crossing the line */}
           <div className="absolute right-0 md:right-16 top-1/2 -translate-y-1/2 z-30">
-            <motion.a
-              href="mailto:dutaalamin23@gmail.com"
+            <motion.button
+              onClick={() => {
+                if (setView) {
+                  setView('contact');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               whileHover={{ scale: 1.05 }}
@@ -65,7 +81,7 @@ export default function Contact() {
               className="w-36 h-36 md:w-48 md:h-48 rounded-full bg-white text-black flex items-center justify-center font-display text-xs sm:text-sm tracking-[0.1em] uppercase font-semibold hover:bg-white/80 transition-all duration-500 shadow-2xl cursor-pointer pointer-events-auto"
             >
               Get in touch
-            </motion.a>
+            </motion.button>
           </div>
         </div>
 
