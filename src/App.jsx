@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Preloader from './components/Preloader';
 import Hero from './components/Hero';
@@ -15,7 +16,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-slate-100 font-sans selection:bg-[#5ce1e6] selection:text-dark">
-      
+      <Analytics />      
       {/* Preloader */}
       <AnimatePresence>
         {showPreloader && (
