@@ -1,46 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const experiences = [
-  {
-    company: 'PT POSCO DX INDONESIA',
-    position: 'Software Engineer',
-    date: 'Jan 2026 - Present',
-    details: 'Developing and maintaining real-time applications, process logic, and production-grade source code for mission-critical automation platforms. Performing debugging, root cause analysis, and performance optimization in 24/7 time-sensitive environments.'
-  },
-  {
-    company: 'PT KARUNIA BERCA INDONESIA',
-    position: 'Software Engineer',
-    date: 'Jan 2025 - Oct 2025',
-    details: 'Developed and customized ERP modules. Integrated ERP business modules, optimized database performance, resolved software, hardware, and database system issues, and supported accurate business reporting.'
-  },
-  {
-    company: 'Appen',
-    position: 'AI Engineer',
-    date: 'Sep 2024 - Dec 2024',
-    details: 'Contributed to the improvement of multilingual AI systems by annotating and translating text-to-speech datasets used for training and fine-tuning speech models.'
-  },
-  {
-    company: 'BPPTKG Geologi',
-    position: 'Bachelor Thesis Researcher',
-    date: 'Oct 2023 - Mar 2024',
-    details: 'Developed a Convolutional Neural Network (CNN) deep learning model to classify images of Mount Merapi for early warning detection accuracy.'
-  },
-  {
-    company: 'PT Indorama Polypet Indonesia',
-    position: 'IT Intern',
-    date: 'Aug 2022 - Sep 2022',
-    details: 'Assisted in maintaining corporate IT infrastructure and developing internal tools to support factory operations and reporting.'
-  }
-];
-
 export default function AboutPage() {
+  const services = [
+    {
+      title: 'Web Engineering & Development',
+      description: 'Developing fast, responsive, and interactive web platforms from scratch. Focused on clean code, smooth animations, and creating intuitive user experiences that perform seamlessly on all devices.',
+      skills: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion']
+    },
+    {
+      title: 'Backend & Database Systems',
+      description: 'Designing scalable database architectures, optimizing database query performance, and building secure, high-performance API integrations to support complex business operations.',
+      skills: ['Node.js', 'RESTful APIs', 'Database Optimization', 'System Architecture']
+    },
+    {
+      title: 'Enterprise Automation & Logic',
+      description: 'Developing custom automation scripts, integrating enterprise system modules, and writing reliable process logic to automate manual tasks and improve overall system efficiency.',
+      skills: ['ERP Customization', 'Workflow Automation', 'Process Logic', 'System Reliability']
+    }
+  ];
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       
       {/* Intro Header */}
       <div className="border-b border-white/15 pb-12 mb-16">
-        
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,7 +35,7 @@ export default function AboutPage() {
         </motion.h1>
       </div>
 
-      {/* Main Grid: Bio on left, Education & Exp on right */}
+      {/* Main Grid: Bio on left, Services & Capabilities on right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
         
         {/* Left Column: Bio & Profile Text */}
@@ -77,7 +61,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-lg text-white/70 leading-relaxed font-light"
           >
-            I’m a Software Engineer with experience in ERP systems, industrial automation, and software development. Currently a Software Engineer at POSCO DX, bridging the gap between software development and industrial operations to build reliable enterprise solutions.
+            I build fast, reliable, and intelligent digital systems that solve real-world problems. By blending clean code, database optimization, and high-performance system logic, I help businesses scale their digital infrastructure and streamline complex operations.
           </motion.p>
 
           <motion.p
@@ -86,14 +70,14 @@ export default function AboutPage() {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="text-sm text-white/40 leading-relaxed font-light"
           >
-            I hold a Bachelor of Informatics from UPN Veteran Yogyakarta. During my studies, I researched deep learning architectures, building a CNN model for real-time Mount Merapi volcanic activity classification. I’m deeply passionate about solving complex problems, database optimization, and high-performance system design.
+            I hold a Bachelor of Informatics from UPN Veteran Yogyakarta. During my studies, I researched deep learning architectures, building a CNN model for real-time Mount Merapi volcanic activity classification. I’m deeply passionate about solving complex engineering problems and leveraging modern technology to improve system reliability.
           </motion.p>
         </div>
 
-        {/* Right Column: Work Experience Timeline & Education */}
+        {/* Right Column: Services & Capabilities */}
         <div className="lg:col-span-6 flex flex-col gap-16">
           
-          {/* Work Experience Section */}
+          {/* Services Section */}
           <div>
             <motion.h3 
               initial={{ opacity: 0, y: 15 }}
@@ -101,38 +85,42 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-8 font-display block"
             >
-              Work Experience
+              Services &amp; Capabilities
             </motion.h3>
 
             <div className="flex flex-col gap-10">
-              {experiences.map((exp, i) => (
+              {services.map((service, i) => (
                 <motion.div
-                  key={exp.company}
+                  key={service.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 * i }}
                   className="group relative pb-8 border-b border-white/5 last:border-0 last:pb-0"
                 >
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="text-md text-white font-medium group-hover:text-[#5ce1e6] transition-colors duration-300">
-                        {exp.company}
-                      </h4>
-                      <p className="text-xs text-white/40">{exp.position}</p>
-                    </div>
-                    <span className="text-[10px] tracking-wider text-white/20 font-display">
-                      {exp.date}
-                    </span>
-                  </div>
-                  <p className="text-xs text-white/35 leading-relaxed font-light mt-3">
-                    {exp.details}
+                  <h4 className="text-md text-white font-medium group-hover:text-white/70 transition-colors duration-300 mb-2">
+                    {service.title}
+                  </h4>
+                  <p className="text-xs text-white/35 leading-relaxed font-light mt-3 mb-4">
+                    {service.description}
                   </p>
+                  
+                  {/* Skill tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {service.skills.map((skill) => (
+                      <span 
+                        key={skill} 
+                        className="text-[9px] tracking-wider uppercase bg-white/5 text-white/60 px-3 py-1 rounded-full border border-white/5 font-sans"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Education Section */}
+          {/* Core Values / Philosophy */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,15 +128,11 @@ export default function AboutPage() {
             className="border-t border-white/5 pt-10"
           >
             <h3 className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-6 font-display block">
-              Education
+              My Philosophy
             </h3>
-            <div className="flex justify-between items-start">
-              <div>
-                <h4 className="text-md text-white font-medium">UPN Veteran Yogyakarta</h4>
-                <p className="text-xs text-white/40">Bachelor of Informatics</p>
-              </div>
-              <span className="text-[10px] tracking-wider text-white/20 font-display">2019 - 2023</span>
-            </div>
+            <p className="text-xs text-white/40 leading-relaxed font-light">
+              I believe in writing code that is clean, maintainable, and optimized for performance. I approach software development not just as writing syntax, but as designing robust architectures that directly drive business efficiency and user satisfaction.
+            </p>
           </motion.div>
 
         </div>
