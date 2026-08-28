@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ export default function ContactPage() {
   });
 
   const [focused, setFocused] = useState(null);
+  const [honeypot, setHoneypot] = useState('');
+  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,9 +21,59 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = `Project Inquiry from ${formData.name || 'Client'}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.org}%0D%0AServices: ${formData.services}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = `mailto:dutaalamin23@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    // 1. Honeypot check (silently filter bots)
+    if (honeypot) {
+      setStatus('success');
+      setFormData({ name: '', email: '', org: '', services: '', message: '' });
+      return;
+    }
+
+    // 2. Cooldown check (prevent spam submissions)
+    const lastSubmit = localStorage.getItem('duta_contact_last_submit');
+    const now = Date.now();
+    if (lastSubmit && now - parseInt(lastSubmit) < 60000) {
+      alert("Please wait a minute before sending another message.");
+      return;
+    }
+
+    // 3. Send using EmailJS or mailto fallback
+    setStatus('sending');
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Fallback if environment variables are not set
+    if (!serviceId || serviceId === 'your_service_id_here') {
+      const subject = `Project Inquiry from ${formData.name || 'Client'}`;
+      const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.org}%0D%0AServices: ${formData.services}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+      window.location.href = `mailto:dutaalamin23@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      setStatus('success');
+      localStorage.setItem('duta_contact_last_submit', now.toString());
+      setFormData({ name: '', email: '', org: '', services: '', message: '' });
+      return;
+    }
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      organization: formData.org,
+      services: formData.services,
+      message: formData.message,
+      to_email: 'dutaalamin23@gmail.com'
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then(() => {
+        setStatus('success');
+        localStorage.setItem('duta_contact_last_submit', now.toString());
+        setFormData({ name: '', email: '', org: '', services: '', message: '' });
+      })
+      .catch((err) => {
+        console.error('EmailJS Error:', err);
+        setStatus('error');
+      });
   };
 
   const inputClass = (fieldName) => `
@@ -159,16 +212,49 @@ export default function ContactPage() {
             />
           </div>
 
+          {/* Honeypot field - anti-spam bot trap */}
+          <input 
+            type="text" 
+            name="subject_api_validate" 
+            value={honeypot} 
+            onChange={(e) => setHoneypot(e.target.value)} 
+            className="hidden" 
+            autoComplete="off" 
+          />
+
+          {/* Status Message Display */}
+          {status === 'success' && (
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-green-400 font-light"
+            >
+              Thank you! Your message has been sent successfully.
+            </motion.p>
+          )}
+          {status === 'error' && (
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-red-400 font-light"
+            >
+              Oops! Something went wrong. Please try again or email directly at dutaalamin23@gmail.com
+            </motion.p>
+          )}
+
           {/* Send Button */}
           <div className="mt-4">
             <button 
               type="submit"
-              className="group px-10 py-4 rounded-full bg-white text-black text-sm font-medium tracking-widest uppercase cursor-pointer hover:bg-white/90 transition-all duration-300 flex items-center gap-3"
+              disabled={status === 'sending'}
+              className="group px-10 py-4 rounded-full bg-white text-black text-sm font-medium tracking-widest uppercase cursor-pointer hover:bg-white/90 disabled:bg-white/40 disabled:text-black/60 transition-all duration-300 flex items-center gap-3"
             >
-              Send it
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              {status === 'sending' ? 'Sending...' : status === 'success' ? 'Sent!' : 'Send it'}
+              {status !== 'sending' && (
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
             </button>
           </div>
 
