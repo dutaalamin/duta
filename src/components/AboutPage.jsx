@@ -72,7 +72,7 @@ export default function AboutPage() {
           >
             <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#111] relative group">
               <img 
-                src="/images/duta.png" 
+                src="/images/duta2.PNG" 
                 alt="Duta Alamin" 
                 className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" 
               />
