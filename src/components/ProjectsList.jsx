@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTransform } from 'framer-motion';
 
-const projects = [
+export const projects = [
   {
     title: 'Draken',
     category: 'Design & Development',
