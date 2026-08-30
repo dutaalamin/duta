@@ -7,6 +7,11 @@ export default function Hero() {
       id="home" 
       className="relative h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-end justify-center border-b border-white/5"
     >
+      {/* Soft Ambient Glow behind the character to blend cutout edges */}
+      <div 
+        className="absolute top-[20%] left-[48.5%] -translate-x-1/2 w-[35vw] h-[35vw] rounded-full bg-white/[0.025] blur-[100px] pointer-events-none z-0"
+      />
+
       <motion.img 
         src="/images/dutafoto.png" 
         alt="Duta Alamin" 
