@@ -7,11 +7,16 @@ export default function Hero() {
       id="home" 
       className="relative h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-end justify-center border-b border-white/5"
     >
-      {/* Sasuke Avatar Character (Positioned Behind Text & Enlarged Taller) */}
       <motion.img 
-        src="/images/sasuke.png" 
-        alt="Sasuke Uchiha" 
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 w-auto h-[72vh] sm:h-[82vh] md:h-[92vh] object-contain object-bottom pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] opacity-95"
+        src="/images/dutafoto.png" 
+        alt="Duta Alamin" 
+        className="absolute left-[48.5%] z-0 w-auto max-w-none object-contain object-bottom pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] opacity-95"
+        style={{ 
+          height: '135vh', 
+          bottom: '-31vh',
+          transform: 'translateX(-50%) rotate(-3.5deg)', 
+          transformOrigin: 'bottom center' 
+        }}
       />
 
       {/* Continuous Auto-Scrolling Huge Text Slider (Moves Right in front of Sasuke) */}
