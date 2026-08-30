@@ -3,27 +3,27 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="relative h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-end justify-center border-b border-white/5"
     >
 
 
-      <motion.img 
-        src="/images/dutafoto.png" 
-        alt="Duta Alamin" 
+      <motion.img
+        src="/images/sasuke.webp"
+        alt="Sasuke Uchiha"
         className="absolute left-[48.5%] z-0 w-auto max-w-none object-contain object-bottom pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] opacity-95"
-        style={{ 
-          height: '135vh', 
-          bottom: '-31vh',
-          transform: 'translateX(-50%) rotate(-3.5deg)', 
-          transformOrigin: 'bottom center' 
+        style={{
+          height: '90vh',
+          bottom: '0',
+          transform: 'translateX(-50%) rotate(-2deg)',
+          transformOrigin: 'bottom center'
         }}
       />
 
       {/* Continuous Auto-Scrolling Huge Text Slider (Moves Right in front of Sasuke) */}
       <div className="absolute bottom-[1.5vh] w-full overflow-hidden whitespace-nowrap flex z-10 pointer-events-none">
-        <motion.div 
+        <motion.div
           animate={{ x: ["-50%", "0%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 18 }}
           className="flex items-center whitespace-nowrap shrink-0"
@@ -35,8 +35,8 @@ export default function Hero() {
             - Duta Alamin
           </h1>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           animate={{ x: ["-50%", "0%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 18 }}
           className="flex items-center whitespace-nowrap shrink-0"
@@ -68,7 +68,7 @@ export default function Hero() {
       {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
       <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-4 sm:right-8 md:right-16 lg:right-28 flex flex-col items-start gap-2 sm:gap-4 md:gap-5 z-20 pointer-events-none">
         <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium">
-          Software<br/>
+          Software<br />
           Engineer & Developer
         </h2>
       </div>
