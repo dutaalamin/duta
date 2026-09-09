@@ -45,7 +45,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Rotating Title Right (Positioned for optimal desktop and mobile visual balance) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[64%] sm:left-[66%] md:left-[70%] lg:left-[74%] h-11 sm:h-14 flex items-center justify-start z-20 pointer-events-none select-none overflow-hidden py-1">
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[60%] sm:left-[64%] md:left-[68%] lg:left-[71%] h-11 sm:h-14 flex items-center justify-start z-20 pointer-events-none select-none overflow-hidden py-1">
         <AnimatePresence mode="wait">
           <motion.h2
             key={titleIndex}
