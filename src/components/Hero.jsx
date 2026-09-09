@@ -35,9 +35,11 @@ export default function Hero() {
       </div>
 
       {/* Floating Info Right (Primary Hero Branding) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start z-20 pointer-events-none select-none">
-        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium whitespace-nowrap">
-          Duta Alamin<br />
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start gap-1.5 sm:gap-3 z-20 pointer-events-none select-none">
+        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white tracking-wide font-normal sm:font-medium whitespace-nowrap">
+          Duta Alamin
+        </h1>
+        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white tracking-wide font-normal sm:font-medium whitespace-nowrap">
           Software Engineer
         </h2>
       </div>
