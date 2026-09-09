@@ -12,7 +12,7 @@ export default function Hero() {
       <motion.img
         src="/images/sasuke.webp"
         alt="Sasuke Uchiha"
-        className="absolute left-[48.5%] z-0 w-auto max-w-none object-contain object-bottom pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] opacity-95"
+        className="absolute left-[48.5%] z-10 w-auto max-w-none object-contain object-bottom pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)] opacity-95"
         style={{
           height: '90vh',
           bottom: '0',
@@ -21,17 +21,17 @@ export default function Hero() {
         }}
       />
 
-      {/* Continuous Auto-Scrolling Huge Text Slider (Moves Right in front of Sasuke) */}
-      <div className="absolute bottom-[1.5vh] w-full overflow-hidden whitespace-nowrap flex z-10 pointer-events-none">
+      {/* Continuous Auto-Scrolling Huge Outline Text Slider (Behind Sasuke with 3D Depth & Aesthetic Stroke) */}
+      <div className="absolute bottom-[1.5vh] w-full overflow-hidden whitespace-nowrap flex z-0 pointer-events-none">
         <motion.div
           animate={{ x: ["-50%", "0%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 18 }}
           className="flex items-center whitespace-nowrap shrink-0"
         >
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-medium text-white leading-none tracking-tight pr-8 sm:pr-12">
+          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
             - Duta Alamin
           </h1>
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-medium text-white leading-none tracking-tight pr-8 sm:pr-12">
+          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
             - Duta Alamin
           </h1>
         </motion.div>
@@ -41,16 +41,16 @@ export default function Hero() {
           transition={{ repeat: Infinity, ease: "linear", duration: 18 }}
           className="flex items-center whitespace-nowrap shrink-0"
         >
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-medium text-white leading-none tracking-tight pr-8 sm:pr-12">
+          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
             - Duta Alamin
           </h1>
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-medium text-white leading-none tracking-tight pr-8 sm:pr-12">
+          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
             - Duta Alamin
           </h1>
         </motion.div>
       </div>
 
-      {/* Floating Location Pill Left (Sticking to the left edge like Dennis, but custom monochrome style) */}
+      {/* Floating Location Pill Left */}
       <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-3 sm:gap-4 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-8 py-2.5 sm:py-3 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
         <div className="flex flex-col items-start leading-none">
           <span className="text-[8px] tracking-[0.2em] uppercase text-white mb-0.5 sm:mb-1 font-display">Located in</span>

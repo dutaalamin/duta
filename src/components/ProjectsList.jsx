@@ -11,12 +11,12 @@ export const projects = [
     image: '/images/projects/draken.png',
   },
   {
-    title: 'Aufa',
+    title: 'Wave',
     category: 'Design & Development',
     role: 'Digital Platform',
     year: '2024',
     url: 'https://aufaardelia.vercel.app/',
-    image: '/images/projects/aufa.png',
+    image: '/images/projects/wave.png',
   },
   {
     title: 'Bunga Cerita',
@@ -138,7 +138,7 @@ export default function ProjectsList({ limit, setView }) {
   const x2 = useTransform(scrollYProgress, [0, 1], ["-15%", "0%"]);
 
   // Select top 8 projects for the gallery
-  const galleryProjectNames = ['Draken', 'Casava', 'Bprotraining', '67Sports', 'ScreenV', 'Bravo', 'Stinger', 'Aufa'];
+  const galleryProjectNames = ['Draken', 'Casava', 'Bprotraining', '67Sports', 'ScreenV', 'Bravo', 'Stinger', 'Wave'];
   const galleryProjects = projects.filter(p => galleryProjectNames.includes(p.title));
   const row1 = galleryProjects.slice(0, 4);
   const row2 = galleryProjects.slice(4, 8);
