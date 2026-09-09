@@ -34,14 +34,14 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Floating Info Right (Primary Hero Branding) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start gap-1.5 sm:gap-3 z-20 pointer-events-none select-none">
-        <h1 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white tracking-wide font-normal sm:font-medium whitespace-nowrap">
+      {/* Floating Info Right (Primary Hero Branding with Visual Hierarchy) */}
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start z-20 pointer-events-none select-none">
+        <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
           Duta Alamin
         </h1>
-        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white tracking-wide font-normal sm:font-medium whitespace-nowrap">
+        <p className="text-xs sm:text-base md:text-lg lg:text-xl text-slate-400 font-light tracking-wide mt-1 sm:mt-2">
           Software Engineer
-        </h2>
+        </p>
       </div>
     </section>
   );
