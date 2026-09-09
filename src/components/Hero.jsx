@@ -34,12 +34,12 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Floating Info Right (Primary Hero Branding with Visual Hierarchy) */}
+      {/* Floating Info Right (Primary Hero Branding with Staggered Alignment) */}
       <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-6 sm:right-16 md:right-32 lg:right-56 flex flex-col items-start z-20 pointer-events-none select-none">
         <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
           Duta Alamin
         </h1>
-        <p className="text-xs sm:text-base md:text-lg lg:text-xl text-slate-400 font-light tracking-wide mt-1 sm:mt-2">
+        <p className="text-xs sm:text-base md:text-lg lg:text-xl text-slate-400 font-light tracking-wide mt-1 sm:mt-2 pl-6 sm:pl-12 md:pl-16">
           Software Engineer
         </p>
       </div>
