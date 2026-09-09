@@ -7,6 +7,10 @@ export default function Hero() {
       id="home"
       className="relative h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-end justify-center border-b border-white/5"
     >
+      {/* Subtle Ambient Background Lighting */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.12),rgba(255,255,255,0))]" />
+
+      {/* Sasuke Center Cutout */}
       <motion.img
         src="/images/sasuke.webp"
         alt="Sasuke Uchiha"
@@ -19,28 +23,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Continuous Auto-Scrolling Huge Outline Text Slider (100% Synchronized Screen-Edge Wrap) */}
-      <div className="absolute bottom-0 w-full overflow-hidden whitespace-nowrap flex z-0 pointer-events-none">
-        <motion.div
-          animate={{ x: ["-100vw", "0vw"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 15 }}
-          className="flex items-center whitespace-nowrap shrink-0"
-        >
-          <div className="w-[100vw] flex justify-center items-center shrink-0">
-            <h1 className="text-[11vw] sm:text-[12vw] md:text-[10vw] font-extrabold font-chakra uppercase tracking-wider select-none text-transparent [-webkit-text-stroke:1.5px_rgba(56,189,248,0.35)] animate-chidori">
-              DUTA ALAMIN
-            </h1>
-          </div>
-          <div className="w-[100vw] flex justify-center items-center shrink-0">
-            <h1 className="text-[11vw] sm:text-[12vw] md:text-[10vw] font-extrabold font-chakra uppercase tracking-wider select-none text-transparent [-webkit-text-stroke:1.5px_rgba(56,189,248,0.35)] animate-chidori">
-              DUTA ALAMIN
-            </h1>
-          </div>
-        </motion.div>
-      </div>
-
       {/* Floating Available Status Pill Left */}
-      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 py-2 sm:py-2.5 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
+      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[36%] flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 py-2 sm:py-2.5 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
         <span className="relative flex h-2.5 w-2.5 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -50,11 +34,17 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start z-20 pointer-events-none">
-        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium whitespace-nowrap">
+      {/* Floating Info Right (Primary Hero Branding) */}
+      <div className="absolute top-[20%] sm:top-[26%] md:top-[34%] right-5 sm:right-10 md:right-20 lg:right-32 flex flex-col items-start gap-1 sm:gap-1.5 z-20 pointer-events-none select-none">
+        <span className="text-[9px] sm:text-xs tracking-[0.25em] uppercase text-cyan-400 font-semibold font-display">
+          Hello, I'm
+        </span>
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight font-display drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          Duta Alamin
+        </h1>
+        <p className="text-xs sm:text-lg md:text-xl text-slate-400 font-light tracking-wide mt-0.5 sm:mt-1">
           Software Engineer
-        </h2>
+        </p>
       </div>
     </section>
   );
