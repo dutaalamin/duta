@@ -146,7 +146,7 @@ export default function ProjectsList({ limit, setView }) {
   const x2 = useTransform(scrollYProgress, [0, 1], ["-15%", "0%"]);
 
   // Select top 8 projects for the gallery
-  const galleryProjectNames = ['Rubic', 'Draken', 'Casava', 'Bprotraining', '67Sports', 'ScreenV', 'Bravo', 'Stinger'];
+  const galleryProjectNames = ['Rubic', 'Wave', 'Duta', 'Bravo', 'Stinger', 'Bprotraining', 'Casava', '67Sports'];
   const galleryProjects = projects.filter(p => galleryProjectNames.includes(p.title));
   const row1 = galleryProjects.slice(0, 4);
   const row2 = galleryProjects.slice(4, 8);
