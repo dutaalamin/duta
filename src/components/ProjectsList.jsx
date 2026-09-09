@@ -3,12 +3,12 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTrans
 
 export const projects = [
   {
-    title: 'Draken',
-    category: 'Design & Development',
-    role: 'Software and tools service platform',
+    title: 'Bravo',
+    category: 'Interaction & Development',
+    role: 'AI-powered marketing platform',
     year: '2024',
-    url: 'https://dutadraken.vercel.app/',
-    image: '/images/projects/draken.png',
+    url: 'https://dutabravo.vercel.app/',
+    image: '/images/projects/bravo.png',
   },
   {
     title: 'Wave',
@@ -27,14 +27,6 @@ export const projects = [
     image: '/images/projects/rubic.png',
   },
   {
-    title: 'Bunga Cerita',
-    category: 'Design & Development',
-    role: 'Storytelling Platform',
-    year: '2024',
-    url: 'https://bungacerita.vercel.app/',
-    image: '/images/projects/bungacerita.png',
-  },
-  {
     title: 'Duta',
     category: 'Design & Development',
     role: 'Personal Portfolio v1',
@@ -43,12 +35,20 @@ export const projects = [
     image: '/images/projects/duta1.png',
   },
   {
-    title: 'Bravo',
-    category: 'Interaction & Development',
-    role: 'AI-powered marketing platform',
+    title: 'Draken',
+    category: 'Design & Development',
+    role: 'Software and tools service platform',
     year: '2024',
-    url: 'https://dutabravo.vercel.app/',
-    image: '/images/projects/bravo.png',
+    url: 'https://dutadraken.vercel.app/',
+    image: '/images/projects/draken.png',
+  },
+  {
+    title: 'Bunga Cerita',
+    category: 'Design & Development',
+    role: 'Storytelling Platform',
+    year: '2024',
+    url: 'https://bungacerita.vercel.app/',
+    image: '/images/projects/bungacerita.png',
   },
   {
     title: 'Stinger',
