@@ -35,7 +35,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Info Right (Primary Hero Branding with Visual Hierarchy) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start z-20 pointer-events-none select-none">
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-6 sm:right-16 md:right-32 lg:right-56 flex flex-col items-start z-20 pointer-events-none select-none">
         <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
           Duta Alamin
         </h1>
