@@ -39,19 +39,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Floating Location Pill Left */}
-      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-3 sm:gap-4 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-8 py-2.5 sm:py-3 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
-        <div className="flex flex-col items-start leading-none">
-          <span className="text-[8px] tracking-[0.2em] uppercase text-white mb-0.5 sm:mb-1 font-display">Located in</span>
-          <span className="text-[11px] sm:text-sm text-white font-light">Indonesia</span>
-        </div>
-        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative overflow-hidden shrink-0">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="animate-spin-slow opacity-60">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"></path>
-            <path d="M2 12h20"></path>
-          </svg>
-        </div>
+      {/* Floating Available Status Pill Left */}
+      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 py-2 sm:py-2.5 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
+        <span className="relative flex h-2.5 w-2.5 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span className="text-[10px] sm:text-xs text-slate-200 font-medium tracking-wide uppercase font-display">
+          Available for work
+        </span>
       </div>
 
       {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
