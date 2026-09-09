@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const greetings = [
   'Halo',
+  'Hello',
   'Bonjour',
   'Ciao',
   'Olá',
   'やあ',
-  'Guten Tag',
   '안녕하세요',
 ];
 
