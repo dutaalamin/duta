@@ -34,7 +34,7 @@ export default function Hero() {
       />
 
       {/* Floating Available Status Pill Left */}
-      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] h-9 sm:h-11 flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
+      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] h-11 sm:h-14 flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
         <span className="relative flex h-2.5 w-2.5 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -44,16 +44,16 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Floating Rotating Title Right (100% Vertically Aligned with Left Pill) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[64%] sm:left-[64%] md:left-[66%] lg:left-[68%] h-9 sm:h-11 flex items-center justify-start z-20 pointer-events-none select-none overflow-hidden">
+      {/* Floating Rotating Title Right (Ample vertical height so descenders like 'g' are never clipped) */}
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[64%] sm:left-[64%] md:left-[66%] lg:left-[68%] h-11 sm:h-14 flex items-center justify-start z-20 pointer-events-none select-none overflow-hidden py-1">
         <AnimatePresence mode="wait">
           <motion.h2
             key={titleIndex}
-            initial={{ y: 20, opacity: 0 }}
+            initial={{ y: 22, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
+            exit={{ y: -22, opacity: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white leading-none tracking-tight font-medium whitespace-nowrap drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+            className="text-base sm:text-2xl md:text-3xl lg:text-5xl text-white leading-normal tracking-tight font-medium whitespace-nowrap drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] pb-1"
           >
             {titles[titleIndex]}
           </motion.h2>
