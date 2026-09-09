@@ -35,16 +35,11 @@ export default function Hero() {
       </div>
 
       {/* Floating Info Right (Primary Hero Branding) */}
-      <div className="absolute top-[20%] sm:top-[26%] md:top-[34%] right-5 sm:right-10 md:right-20 lg:right-32 flex flex-col items-start gap-1 sm:gap-1.5 z-20 pointer-events-none select-none">
-        <span className="text-[9px] sm:text-xs tracking-[0.25em] uppercase text-cyan-400 font-semibold font-display">
-          Hello, I'm
-        </span>
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight font-display drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-          Duta Alamin
-        </h1>
-        <p className="text-xs sm:text-lg md:text-xl text-slate-400 font-light tracking-wide mt-0.5 sm:mt-1">
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start z-20 pointer-events-none select-none">
+        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium whitespace-nowrap">
+          Duta Alamin<br />
           Software Engineer
-        </p>
+        </h2>
       </div>
     </section>
   );
