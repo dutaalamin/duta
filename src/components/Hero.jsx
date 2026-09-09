@@ -1,7 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
+  const titles = ["Duta Alamin", "Software Engineer"];
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % titles.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -24,7 +34,7 @@ export default function Hero() {
       />
 
       {/* Floating Available Status Pill Left */}
-      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[36%] flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 py-2 sm:py-2.5 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
+      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 py-2 sm:py-2.5 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
         <span className="relative flex h-2.5 w-2.5 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -34,11 +44,20 @@ export default function Hero() {
         </span>
       </div>
 
-      {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-6 sm:right-16 md:right-32 lg:right-56 flex flex-col items-start z-20 pointer-events-none select-none">
-        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium whitespace-nowrap">
-          Software Engineer
-        </h2>
+      {/* Floating Rotating Title Right (Animated Text Flipper) */}
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-6 sm:right-16 md:right-32 lg:right-56 z-20 pointer-events-none select-none h-10 sm:h-14 overflow-hidden flex items-center">
+        <AnimatePresence mode="wait">
+          <motion.h2
+            key={titleIndex}
+            initial={{ y: 25, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -25, opacity: 0 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-none tracking-wide font-normal sm:font-medium whitespace-nowrap drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+          >
+            {titles[titleIndex]}
+          </motion.h2>
+        </AnimatePresence>
       </div>
     </section>
   );
