@@ -45,7 +45,7 @@ export default function Hero() {
       </div>
 
       {/* Floating Rotating Title Right (Animated Text Flipper anchored to the left for pixel-perfect letter alignment) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[56%] sm:left-[60%] md:left-[64%] lg:left-[66%] z-20 pointer-events-none select-none h-12 sm:h-16 overflow-hidden flex items-center justify-start">
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[60%] sm:left-[62%] md:left-[64%] lg:left-[66%] z-20 pointer-events-none select-none h-12 sm:h-16 overflow-hidden flex items-center justify-start">
         <AnimatePresence mode="wait">
           <motion.h2
             key={titleIndex}
@@ -53,7 +53,7 @@ export default function Hero() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -25, opacity: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg sm:text-3xl md:text-4xl lg:text-5xl text-white leading-none tracking-tight font-medium whitespace-nowrap drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+            className="text-sm sm:text-3xl md:text-4xl lg:text-5xl text-white leading-none tracking-tight font-medium whitespace-nowrap drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
           >
             {titles[titleIndex]}
           </motion.h2>
