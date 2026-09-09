@@ -20,7 +20,7 @@ export default function Hero() {
       />
 
       {/* Continuous Auto-Scrolling Huge Outline Text Slider (100% Synchronized Screen-Edge Wrap) */}
-      <div className="absolute bottom-[1.5vh] w-full overflow-hidden whitespace-nowrap flex z-0 pointer-events-none">
+      <div className="absolute bottom-0 w-full overflow-hidden whitespace-nowrap flex z-0 pointer-events-none">
         <motion.div
           animate={{ x: ["-100vw", "0vw"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 15 }}
