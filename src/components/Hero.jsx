@@ -7,8 +7,6 @@ export default function Hero() {
       id="home"
       className="relative h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-end justify-center border-b border-white/5"
     >
-
-
       <motion.img
         src="/images/sasuke.webp"
         alt="Sasuke Uchiha"
@@ -21,32 +19,23 @@ export default function Hero() {
         }}
       />
 
-      {/* Continuous Auto-Scrolling Huge Outline Text Slider (Behind Sasuke with 3D Depth & Aesthetic Stroke) */}
+      {/* Continuous Auto-Scrolling Huge Outline Text Slider (100% Synchronized Screen-Edge Wrap) */}
       <div className="absolute bottom-[1.5vh] w-full overflow-hidden whitespace-nowrap flex z-0 pointer-events-none">
         <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 18 }}
+          animate={{ x: ["-100vw", "0vw"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 15 }}
           className="flex items-center whitespace-nowrap shrink-0"
         >
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
-            - Duta Alamin
-          </h1>
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
-            - Duta Alamin
-          </h1>
-        </motion.div>
-
-        <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 18 }}
-          className="flex items-center whitespace-nowrap shrink-0"
-        >
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
-            - Duta Alamin
-          </h1>
-          <h1 className="text-[18vw] sm:text-[16vw] md:text-[14vw] font-bold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] leading-none tracking-tight pr-8 sm:pr-12 select-none">
-            - Duta Alamin
-          </h1>
+          <div className="w-[100vw] flex justify-center items-center shrink-0">
+            <h1 className="text-[11vw] sm:text-[12vw] md:text-[10vw] font-extrabold font-chakra uppercase tracking-wider select-none text-transparent [-webkit-text-stroke:1.5px_rgba(56,189,248,0.35)] animate-chidori">
+              DUTA ALAMIN
+            </h1>
+          </div>
+          <div className="w-[100vw] flex justify-center items-center shrink-0">
+            <h1 className="text-[11vw] sm:text-[12vw] md:text-[10vw] font-extrabold font-chakra uppercase tracking-wider select-none text-transparent [-webkit-text-stroke:1.5px_rgba(56,189,248,0.35)] animate-chidori">
+              DUTA ALAMIN
+            </h1>
+          </div>
         </motion.div>
       </div>
 
@@ -59,17 +48,16 @@ export default function Hero() {
         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative overflow-hidden shrink-0">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.2" className="animate-spin-slow opacity-60">
             <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"></path>
             <path d="M2 12h20"></path>
           </svg>
         </div>
       </div>
 
       {/* Floating Info Right (Positioned for optimal visual balance on all devices) */}
-      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-4 sm:right-8 md:right-16 lg:right-28 flex flex-col items-start gap-2 sm:gap-4 md:gap-5 z-20 pointer-events-none">
-        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium">
-          Software<br />
-          Engineer & Developer
+      <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] right-5 sm:right-12 md:right-24 lg:right-40 flex flex-col items-start z-20 pointer-events-none">
+        <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl text-white leading-tight tracking-wide font-normal sm:font-medium whitespace-nowrap">
+          Software Engineer
         </h2>
       </div>
     </section>
