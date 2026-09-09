@@ -9,8 +9,6 @@ const greetings = [
   'やあ',
   'Guten Tag',
   '안녕하세요',
-  'Привет',
-  'Hej',
 ];
 
 export default function Preloader({ onComplete }) {
