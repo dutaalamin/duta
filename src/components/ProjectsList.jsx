@@ -161,8 +161,8 @@ export default function ProjectsList({ limit, setView }) {
         <h2 className="font-display text-[10px] tracking-[0.3em] font-light text-white/40 uppercase">Recent Work</h2>
       </div>
 
-      {/* Table-like Project List */}
-      <div className="relative border-t border-white/20">
+      {/* Desktop: Table-like Project List (hidden on mobile, visible on lg) */}
+      <div className="hidden lg:block relative border-t border-white/20">
         {visibleProjects.map((project, index) => (
           <a
             key={project.title}
@@ -189,6 +189,45 @@ export default function ProjectsList({ limit, setView }) {
 
             {/* Bottom Accent line glow */}
             <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500" />
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile & Tablet: Visual Card Grid with Direct Images */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:hidden pt-2">
+        {visibleProjects.map((project) => (
+          <a
+            key={`mobile-${project.title}`}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative bg-[#111111]/80 border border-white/10 rounded-2xl overflow-hidden flex flex-col active:scale-[0.98] transition-all duration-300 shadow-xl"
+          >
+            <div className="relative w-full aspect-[16/10] overflow-hidden bg-black/60">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover object-top opacity-90 group-active:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[10px] text-white/70 font-mono">
+                {project.year}
+              </div>
+            </div>
+            <div className="p-4 sm:p-5 flex flex-col justify-between flex-1">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <h3 className="font-display text-lg sm:text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                      <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-xs text-white/50 leading-relaxed">{project.role || project.category}</p>
+              </div>
+            </div>
           </a>
         ))}
       </div>

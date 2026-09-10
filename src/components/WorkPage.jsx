@@ -99,8 +99,8 @@ export default function WorkPage() {
           </button>
         </div>
 
-        {/* View Mode Toggles */}
-        <div className="flex gap-3">
+        {/* View Mode Toggles (Desktop only) */}
+        <div className="hidden lg:flex gap-3">
           {/* LIST Toggle */}
           <button
             onClick={() => setLayoutMode('list')}
@@ -140,7 +140,7 @@ export default function WorkPage() {
         <AnimatePresence mode="wait">
           {layoutMode === 'list' ? (
             
-            /* --- LIST VIEW --- */
+            /* --- LIST VIEW (Desktop Table + Mobile Cards) --- */
             <motion.div
               key="list-layout"
               initial={{ opacity: 0 }}
@@ -150,92 +150,134 @@ export default function WorkPage() {
               onMouseMove={handleMouseMove}
               className="relative"
             >
-              {/* Header Titles */}
-              <div className="hidden md:grid grid-cols-12 py-4 text-[10px] tracking-[0.2em] uppercase text-white/30 font-display border-b border-white/5 mb-2">
-                <span className="col-span-6">Client</span>
-                <span className="col-span-4">Services</span>
-                <span className="col-span-2 text-right">Year</span>
+              {/* DESKTOP TABLE VIEW */}
+              <div className="hidden lg:block">
+                {/* Header Titles */}
+                <div className="grid grid-cols-12 py-4 text-[10px] tracking-[0.2em] uppercase text-white/30 font-display border-b border-white/5 mb-2">
+                  <span className="col-span-6">Client</span>
+                  <span className="col-span-4">Services</span>
+                  <span className="col-span-2 text-right">Year</span>
+                </div>
+
+                {/* Rows */}
+                <div className="flex flex-col">
+                  {filteredProjects.map((project, index) => (
+                    <a
+                      key={`list-${project.title}`}
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      className="group relative grid grid-cols-12 items-center py-8 md:py-10 border-b border-white/5 px-0 hover:bg-white/[0.01] transition-all duration-300 cursor-pointer overflow-hidden"
+                    >
+                      {/* Left: Client name */}
+                      <div className="col-span-6 flex items-center z-10">
+                        <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white/95 group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                          {project.title}
+                        </h3>
+                      </div>
+
+                      {/* Middle: Services */}
+                      <div className="col-span-4 z-10">
+                        <span className="text-sm font-light text-white/40 group-hover:text-white/80 transition-colors duration-500">
+                          {project.category}
+                        </span>
+                      </div>
+
+                      {/* Right: Year */}
+                      <div className="col-span-2 text-right z-10">
+                        <span className="text-sm font-light text-white/30 group-hover:text-white/70 transition-colors duration-500">
+                          {project.year}
+                        </span>
+                      </div>
+
+                      {/* Bottom border indicator */}
+                      <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500" />
+                    </a>
+                  ))}
+                </div>
+
+                {/* Mockup Hover Card */}
+                <AnimatePresence>
+                  {hoveredIndex !== null && (
+                    <motion.div
+                      initial={{ scale: 0.6, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.6, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      style={{
+                        position: 'fixed',
+                        left: cursorX,
+                        top: cursorY,
+                        x: '-50%',
+                        y: '-50%',
+                        pointerEvents: 'none',
+                      }}
+                      className="w-[400px] h-[300px] z-50 overflow-hidden rounded-xl shadow-2xl bg-[#050505] border border-white/10"
+                    >
+                      <motion.div
+                        animate={{ y: -hoveredIndex * 300 }}
+                        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                        className="w-full h-full flex flex-col"
+                      >
+                        {filteredProjects.map((project) => (
+                          <div
+                            key={`hover-list-${project.title}`}
+                            className="w-full h-[300px] shrink-0 relative flex items-center justify-center bg-[#050505] overflow-hidden"
+                          >
+                            <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-85" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="w-20 h-20 rounded-full bg-[#1839db] text-white flex items-center justify-center font-display text-[10px] tracking-[0.25em] uppercase font-semibold shadow-md">
+                                View
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              {/* Rows */}
-              <div className="flex flex-col">
-                {filteredProjects.map((project, index) => (
+              {/* MOBILE GRID VIEW (Always displays images directly on mobile) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
+                {filteredProjects.map((project) => (
                   <a
-                    key={`list-${project.title}`}
+                    key={`mobile-work-${project.title}`}
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    className="group relative grid grid-cols-1 md:grid-cols-12 items-center py-8 md:py-10 border-b border-white/5 px-0 hover:bg-white/[0.01] transition-all duration-300 cursor-pointer overflow-hidden"
+                    className="group relative bg-[#111111]/80 border border-white/10 rounded-2xl overflow-hidden flex flex-col active:scale-[0.98] transition-all duration-300 shadow-xl"
                   >
-                    {/* Left: Client name */}
-                    <div className="col-span-12 md:col-span-6 flex items-center z-10">
-                      <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white/95 group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
-                        {project.title}
-                      </h3>
-                    </div>
-
-                    {/* Middle: Services */}
-                    <div className="col-span-12 md:col-span-4 mt-2 md:mt-0 z-10">
-                      <span className="text-sm font-light text-white/40 group-hover:text-white/80 transition-colors duration-500">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    {/* Right: Year */}
-                    <div className="col-span-12 md:col-span-2 mt-1 md:mt-0 text-left md:text-right z-10">
-                      <span className="text-sm font-light text-white/30 group-hover:text-white/70 transition-colors duration-500">
+                    <div className="relative w-full aspect-[16/10] overflow-hidden bg-black/60">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top opacity-90 group-active:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[10px] text-white/70 font-mono">
                         {project.year}
-                      </span>
+                      </div>
                     </div>
-
-                    {/* Bottom border indicator */}
-                    <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-500" />
+                    <div className="p-4 sm:p-5 flex flex-col justify-between flex-1">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <h3 className="font-display text-lg sm:text-xl font-medium text-white group-hover:text-cyan-400 transition-colors">
+                            {project.title}
+                          </h3>
+                          <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                              <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </div>
+                        </div>
+                        <p className="text-xs text-white/50 leading-relaxed">{project.role || project.category}</p>
+                      </div>
+                    </div>
                   </a>
                 ))}
               </div>
-
-              {/* Mockup Hover Card */}
-              <AnimatePresence>
-                {hoveredIndex !== null && (
-                  <motion.div
-                    initial={{ scale: 0.6, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.6, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    style={{
-                      position: 'fixed',
-                      left: cursorX,
-                      top: cursorY,
-                      x: '-50%',
-                      y: '-50%',
-                      pointerEvents: 'none',
-                    }}
-                    className="hidden lg:block w-[400px] h-[300px] z-50 overflow-hidden rounded-xl shadow-2xl bg-[#050505] border border-white/10"
-                  >
-                    <motion.div
-                      animate={{ y: -hoveredIndex * 300 }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full h-full flex flex-col"
-                    >
-                      {filteredProjects.map((project) => (
-                        <div
-                          key={`hover-list-${project.title}`}
-                          className="w-full h-[300px] shrink-0 relative flex items-center justify-center bg-[#050505] overflow-hidden"
-                        >
-                          <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-85" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-20 h-20 rounded-full bg-[#1839db] text-white flex items-center justify-center font-display text-[10px] tracking-[0.25em] uppercase font-semibold shadow-md">
-                              View
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
 
             </motion.div>
           ) : (
