@@ -15,7 +15,7 @@ export const projects = [
     category: 'Design & Development',
     role: 'Digital Platform',
     year: '2024',
-    url: 'https://aufaardelia.vercel.app/',
+    url: 'https://wavewave.vercel.app/',
     image: '/images/projects/wave.png',
   },
   {

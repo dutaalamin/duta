@@ -33,16 +33,29 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating Available Status Pill Left */}
-      <div className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] h-11 sm:h-14 flex items-center gap-2.5 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-4 sm:pr-5 pl-4 sm:pl-7 z-20 pointer-events-none select-none shadow-[20px_0_40px_rgba(0,0,0,0.5)]">
-        <span className="relative flex h-2.5 w-2.5 shrink-0">
+      {/* Floating Available Status Pill Left (Appears periodically with sliding animation, compact on mobile) */}
+      <motion.div
+        initial={{ x: '-105%', opacity: 0 }}
+        animate={{
+          x: ['-105%', '0%', '0%', '-105%', '-105%'],
+          opacity: [0, 1, 1, 0, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          times: [0, 0.1, 0.5, 0.6, 1],
+        }}
+        className="absolute left-0 top-[22%] sm:top-[28%] md:top-[38%] h-7 sm:h-12 flex items-center gap-2 sm:gap-3 bg-[#111111]/90 backdrop-blur-md border-y border-r border-white/10 rounded-r-full pr-3 sm:pr-5 pl-3 sm:pl-6 z-20 pointer-events-none select-none shadow-[10px_0_30px_rgba(0,0,0,0.5)]"
+      >
+        <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-emerald-500"></span>
         </span>
-        <span className="text-[10px] sm:text-xs text-slate-200 font-medium tracking-wide uppercase font-display">
+        <span className="text-[9px] sm:text-xs text-slate-200 font-medium tracking-wider uppercase font-display whitespace-nowrap">
           Available for work
         </span>
-      </div>
+      </motion.div>
 
       {/* Floating Rotating Title Right (Positioned for optimal desktop and mobile visual balance) */}
       <div className="absolute top-[22%] sm:top-[28%] md:top-[38%] left-[60%] sm:left-[64%] md:left-[68%] lg:left-[71%] h-11 sm:h-14 flex items-center justify-start z-20 pointer-events-none select-none overflow-hidden py-1">
