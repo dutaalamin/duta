@@ -3,12 +3,12 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTrans
 
 export const projects = [
   {
-    title: 'Bravo',
-    category: 'Interaction & Development',
-    role: 'AI-powered marketing platform',
-    year: '2024',
-    url: 'https://dutabravo.vercel.app/',
-    image: '/images/projects/bravo.png',
+    title: 'Quran',
+    category: 'Design & Development',
+    role: 'Al-Quran Digital Platform',
+    year: '2026',
+    url: 'https://dquran.vercel.app/',
+    image: '/images/projects/dquran.png',
   },
   {
     title: 'Wave',
@@ -33,6 +33,14 @@ export const projects = [
     year: '2024',
     url: 'https://duta23.vercel.app/',
     image: '/images/projects/duta1.png',
+  },
+  {
+    title: 'Bravo',
+    category: 'Interaction & Development',
+    role: 'AI-powered marketing platform',
+    year: '2024',
+    url: 'https://dutabravo.vercel.app/',
+    image: '/images/projects/bravo.png',
   },
   {
     title: 'Draken',
@@ -146,7 +154,7 @@ export default function ProjectsList({ limit, setView }) {
   const x2 = useTransform(scrollYProgress, [0, 1], ["-15%", "0%"]);
 
   // Select top 8 projects for the gallery
-  const galleryProjectNames = ['Rubic', 'Wave', 'Duta', 'Bravo', 'Stinger', 'Bprotraining', 'Casava', '67Sports'];
+  const galleryProjectNames = ['Quran', 'Rubic', 'Wave', 'Duta', 'Bravo', 'Stinger', 'Bprotraining', 'Casava'];
   const galleryProjects = projects.filter(p => galleryProjectNames.includes(p.title));
   const row1 = galleryProjects.slice(0, 4);
   const row2 = galleryProjects.slice(4, 8);
