@@ -33,7 +33,7 @@ export default function Hero() {
             initial={{ scale: 0, rotate: 0 }}
             animate={{ scale: 1, rotate: -5 }}
             transition={{ duration: 0.4, delay: 0.3, type: "spring", stiffness: 260, damping: 15 }}
-            className="absolute bottom-0 right-[-10px] sm:right-[-20px] md:right-[-28px] translate-y-[88%] bg-[#263c70] text-white font-mono font-bold text-xs sm:text-sm md:text-base lg:text-lg tracking-wider px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2 border-2 border-white/30 shadow-[0_10px_30px_rgba(38,60,112,0.8)] uppercase select-none pointer-events-none"
+            className="absolute bottom-0 right-[-10px] sm:right-[-20px] md:right-[-28px] translate-y-[88%] bg-[#263c70] text-white font-mono font-bold text-xs sm:text-sm md:text-base lg:text-lg tracking-wider px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2 shadow-[0_10px_30px_rgba(38,60,112,0.8)] uppercase select-none pointer-events-none"
           >
             SOFTWARE ENGINEER
           </motion.div>
