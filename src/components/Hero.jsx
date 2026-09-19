@@ -16,8 +16,8 @@ export default function Hero() {
         <ThreeHero />
       </div>
 
-      {/* Hero Typography: Duta Alamin (Left-center, enlarged and shifted right for balance) */}
-      <div className="absolute left-8 sm:left-14 md:left-20 lg:left-32 xl:left-40 top-1/2 -translate-y-1/2 z-20 pointer-events-none select-none">
+      {/* Hero Typography: Duta Alamin (Left-center, shifted slightly upward for optimal visual balance) */}
+      <div className="absolute left-8 sm:left-14 md:left-20 lg:left-32 xl:left-40 top-[45%] -translate-y-1/2 z-20 pointer-events-none select-none">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
