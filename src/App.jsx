@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
-import Preloader from './components/Preloader';
 import Hero from './components/Hero';
 import Intro from './components/Intro';
 import ProjectsList from './components/ProjectsList';
@@ -13,7 +12,6 @@ import PageTransition from './components/PageTransition';
 import WorkPage from './components/WorkPage';
 
 export default function App() {
-  const [showPreloader, setShowPreloader] = useState(true);
   const [view, setView] = useState('home'); // 'home', 'work', 'about', or 'contact'
   const [transition, setTransition] = useState({ isActive: false, label: '' });
 
@@ -44,21 +42,13 @@ export default function App() {
     <div className="relative min-h-screen bg-[#0a0a0a] text-slate-100 font-sans selection:bg-[#5ce1e6] selection:text-dark">
       <Analytics />
       <PageTransition isActive={transition.isActive} label={transition.label} />
-      
-      {/* Preloader */}
-      <AnimatePresence>
-        {showPreloader && (
-          <Preloader onComplete={() => setShowPreloader(false)} />
-        )}
-      </AnimatePresence>
 
       {/* Main Content */}
-      {!showPreloader && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
           {/* Header Navigation */}
           <Navbar currentView={view} setView={handleNavigate} />
 
@@ -112,7 +102,6 @@ export default function App() {
             )}
           </AnimatePresence>
         </motion.div>
-      )}
     </div>
   );
 }

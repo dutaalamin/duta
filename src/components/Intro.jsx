@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Intro({ setView }) {
   return (
-    <section className="relative py-28 md:py-44 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto border-t border-white/5">
+    <section className="relative py-28 md:py-44 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Left Column: Clear & Direct Statement */}

@@ -7,4 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  assetsInclude: ['**/*.gltf', '**/*.glb', '**/*.webp', '**/*.png', '**/*.jpg', '**/*.ktx2'],
 })
