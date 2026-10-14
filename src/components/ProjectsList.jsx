@@ -2,21 +2,21 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTransform } from 'framer-motion';
 
 export const projects = [
-  { title: 'Quran', category: 'Design & Development', role: 'Al-Quran Digital Platform', year: '2026', url: 'https://dquran.vercel.app/', image: '/images/projects/dquran.png' },
-  { title: 'Wave', category: 'Design & Development', role: 'Digital Platform', year: '2024', url: 'https://wavewave.vercel.app/', image: '/images/projects/wave.png' },
-  { title: 'Rubic', category: 'Design & Development', role: 'Digital Platform', year: '2024', url: 'https://rubicduta.vercel.app/', image: '/images/projects/rubic.png' },
-  { title: 'Duta', category: 'Design & Development', role: 'Personal Portfolio v1', year: '2024', url: 'https://duta23.vercel.app/', image: '/images/projects/duta1.png' },
-  { title: 'Bravo', category: 'Interaction & Development', role: 'AI-powered marketing platform', year: '2024', url: 'https://dutabravo.vercel.app/', image: '/images/projects/bravo.png' },
-  { title: 'Draken', category: 'Design & Development', role: 'Software and tools service platform', year: '2024', url: 'https://dutadraken.vercel.app/', image: '/images/projects/draken.png' },
-  { title: 'Bunga Cerita', category: 'Design & Development', role: 'Storytelling Platform', year: '2024', url: 'https://bungacerita.vercel.app/', image: '/images/projects/bungacerita.png' },
-  { title: 'Stinger', category: 'Design & Development', role: 'Web hosting service platform', year: '2024', url: 'https://dutastinger.vercel.app/', image: '/images/projects/stinger.png' },
+  { title: 'Quran', category: 'Design & Development', role: 'Al-Quran Digital Platform', year: '2026', url: 'https://quran.duta1.com/', image: '/images/projects/dquran.png' },
+  { title: 'Wave', category: 'Design & Development', role: 'Digital Platform', year: '2024', url: 'https://wave.duta1.com/', image: '/images/projects/wave.png' },
+  { title: 'Rubic', category: 'Design & Development', role: 'Digital Platform', year: '2024', url: 'https://rubic.duta1.com/', image: '/images/projects/rubic.png' },
+  { title: 'Duta', category: 'Design & Development', role: 'Personal Portfolio v1', year: '2024', url: 'https://duta.duta1.com/', image: '/images/projects/duta1.png' },
+  { title: 'Bravo', category: 'Interaction & Development', role: 'AI-powered marketing platform', year: '2024', url: 'https://bravo.duta1.com/', image: '/images/projects/bravo.png' },
+  { title: 'Draken', category: 'Design & Development', role: 'Software and tools service platform', year: '2024', url: 'https://draken.duta1.com/', image: '/images/projects/draken.png' },
+  { title: 'Bunga Cerita', category: 'Design & Development', role: 'Storytelling Platform', year: '2024', url: 'https://bungacerita.duta1.com/', image: '/images/projects/bungacerita.png' },
+  { title: 'Stinger', category: 'Design & Development', role: 'Web hosting service platform', year: '2024', url: 'https://stinger.duta1.com/', image: '/images/projects/stinger.png' },
   { title: 'Bprotraining', category: 'Development & Integration', role: 'Soccer training platform', year: '2026', url: 'https://gtech.gaisar.id/', image: '/images/projects/bprotraining.png' },
-  { title: 'Casava', category: 'Design & Development', role: 'E-commerce platform', year: '2024', url: 'https://casavastore.vercel.app/', image: '/images/projects/casava.png' },
-  { title: '67Sports', category: 'Design & Development', role: 'Sneakers E-commerce', year: '2024', url: 'https://67sports.vercel.app/', image: '/images/projects/67sports.png' },
-  { title: 'ScreenV', category: 'Interaction & Development', role: 'Movie discovery platform', year: '2023', url: 'https://screenv.vercel.app/', image: '/images/projects/screenv.png' },
-  { title: 'Colorway', category: 'Design & Development', role: 'Color palette generator', year: '2024', url: 'https://colorways.vercel.app/', image: '/images/projects/colorway.png' },
-  { title: 'Savory', category: 'Design & Development', role: 'Food ordering website', year: '2024', url: 'https://savoryz.vercel.app/', image: '/images/projects/savory.png' },
-  { title: 'Fishytype', category: 'Interaction & Development', role: 'Interactive typing speed test', year: '2023', url: 'https://fishytype.vercel.app/', image: '/images/projects/fishytype.png' },
+  { title: 'Casava', category: 'Design & Development', role: 'E-commerce platform', year: '2024', url: 'https://casava.duta1.com/', image: '/images/projects/casava.png' },
+  { title: '67Sports', category: 'Design & Development', role: 'Sneakers E-commerce', year: '2024', url: 'https://store.duta1.com/', image: '/images/projects/67sports.png' },
+  { title: 'ScreenV', category: 'Interaction & Development', role: 'Movie discovery platform', year: '2023', url: 'https://screenv.duta1.com/', image: '/images/projects/screenv.png' },
+  { title: 'Colorway', category: 'Design & Development', role: 'Color palette generator', year: '2024', url: 'https://color.duta1.com/', image: '/images/projects/colorway.png' },
+  { title: 'Savory', category: 'Design & Development', role: 'Food ordering website', year: '2024', url: 'https://savory.duta1.com/', image: '/images/projects/savory.png' },
+  { title: 'Fishytype', category: 'Interaction & Development', role: 'Interactive typing speed test', year: '2023', url: 'https://fishytype.duta1.com/', image: '/images/projects/fishytype.png' },
 ];
 
 export default function ProjectsList({ limit, onMoreWork }) {
