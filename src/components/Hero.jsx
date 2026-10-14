@@ -19,7 +19,7 @@ export default function Hero() {
           <button
             key={link.id}
             onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-            className="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-signal hover:text-paper transition-colors duration-300 cursor-pointer"
+            className="font-display font-semibold text-sm sm:text-base uppercase tracking-wide text-signal hover:text-paper transition-colors duration-300 cursor-pointer"
           >
             {link.label}
           </button>

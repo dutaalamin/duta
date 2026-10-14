@@ -50,7 +50,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
         onMouseMove={handleMouseMove}
         className="relative pt-16 pb-16 px-6 md:px-12 lg:px-20 w-full max-w-7xl mx-auto"
       >
-        <h2 className="font-mono text-xs tracking-widest uppercase text-mute mb-4">Recent Work</h2>
+        <h2 className="font-display font-semibold text-sm uppercase tracking-widest text-mute mb-4">Recent Work</h2>
 
         {/* Desktop: daftar bersih */}
         <div className="hidden lg:block relative">
@@ -67,7 +67,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
               <h3 className="font-display font-semibold text-3xl xl:text-4xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500 tracking-[-0.02em]">
                 {project.title}
               </h3>
-              <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
+              <span className="font-display text-sm text-mute group-hover:text-paper/80 transition-colors duration-300">
                 {project.category}
               </span>
             </a>
@@ -93,7 +93,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
               </div>
               <div className="p-4 flex flex-col gap-1">
                 <h3 className="font-display font-semibold text-lg text-paper">{project.title}</h3>
-                <p className="font-mono text-[10px] text-mute">{project.role || project.category}</p>
+                <p className="font-display text-xs text-mute">{project.role || project.category}</p>
               </div>
             </a>
           ))}
@@ -131,7 +131,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                 {projects.map((project) => (
                   <div key={`h-${project.title}`} className="w-full h-[270px] shrink-0 relative bg-ink-3 overflow-hidden">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80" />
-                    <div className="absolute bottom-3 left-3 bg-signal text-ink font-mono text-[10px] tracking-widest uppercase font-semibold px-3 py-1.5">
+                    <div className="absolute bottom-3 left-3 bg-signal text-ink font-display text-[11px] tracking-widest uppercase font-semibold px-3 py-1.5">
                       Open ↗
                     </div>
                   </div>
@@ -167,7 +167,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                   className="w-full h-full object-cover object-center opacity-100 transition-transform duration-700 group-hover/card:scale-105"
                 />
                 <div className="absolute inset-0 bg-ink/30 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="font-mono text-xs tracking-widest uppercase text-paper">{project.title}</span>
+                  <span className="font-display font-semibold text-sm tracking-widest uppercase text-paper">{project.title}</span>
                 </div>
               </a>
             ))}
