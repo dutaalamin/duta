@@ -16,6 +16,17 @@ import iconSpritesheetUrl from '../assets/textures/icon-spritesheet.webp';
 
 export default function ThreeHero() {
   const containerRef = useRef(null);
+  const enableGyroRef = useRef(null);
+  const gyroStateRef = useRef(null);
+  const [gyroOn, setGyroOn] = React.useState(false);
+  const [isTouch, setIsTouch] = React.useState(false);
+
+  useEffect(() => {
+    setIsTouch(
+      typeof window !== 'undefined' &&
+        ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    );
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -430,7 +441,6 @@ export default function ThreeHero() {
     const onOrient = (e) => {
       if (e.gamma == null || e.beta == null) return;
       if (!gyroBase) gyroBase = { gamma: e.gamma, beta: e.beta };
-      // gamma: kiri-kanan (-90..90), beta: depan-belakang (-180..180)
       const gx = (e.gamma - gyroBase.gamma) / 30;   // ~30° = penuh
       const gy = (e.beta - gyroBase.beta) / 40;
       gyro.x = Math.max(-1, Math.min(1, gx));
@@ -438,23 +448,29 @@ export default function ThreeHero() {
       gyro.active = true;
     };
 
-    // iOS 13+ butuh izin → minta saat pertama sentuh
-    const requestGyro = () => {
+    // iOS 13+ WAJIB dipanggil dari gesture user langsung (tombol), bukan touchstart global
+    const enableGyro = () => {
       const DOE = window.DeviceOrientationEvent;
       if (DOE && typeof DOE.requestPermission === 'function') {
-        DOE.requestPermission()
+        // iOS: minta izin
+        return DOE.requestPermission()
           .then((state) => {
-            if (state === 'granted') window.addEventListener('deviceorientation', onOrient);
+            if (state === 'granted') {
+              window.addEventListener('deviceorientation', onOrient);
+              return true;
+            }
+            return false;
           })
-          .catch(() => {});
-      } else {
-        window.addEventListener('deviceorientation', onOrient);
+          .catch(() => false);
       }
-      window.removeEventListener('touchstart', requestGyro);
-      window.removeEventListener('click', requestGyro);
+      // Android / lain: langsung
+      window.addEventListener('deviceorientation', onOrient);
+      return Promise.resolve(true);
     };
-    window.addEventListener('touchstart', requestGyro, { once: true });
-    window.addEventListener('click', requestGyro, { once: true });
+
+    // Simpan untuk dipakai tombol di JSX
+    enableGyroRef.current = enableGyro;
+    gyroStateRef.current = gyro;
 
     // ── Resize ──
     const onResize = () => {
@@ -522,8 +538,6 @@ export default function ThreeHero() {
       window.removeEventListener('mousemove', onPointerLook);
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', onTouchEnd);
-      window.removeEventListener('touchstart', requestGyro);
-      window.removeEventListener('click', requestGyro);
       window.removeEventListener('deviceorientation', onOrient);
       window.removeEventListener('mousemove', onUserActivity);
       window.removeEventListener('click', onUserActivity);
@@ -538,5 +552,20 @@ export default function ThreeHero() {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />;
+  return (
+    <>
+      <div ref={containerRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
+      {isTouch && !gyroOn && (
+        <button
+          onClick={async () => {
+            const ok = await enableGyroRef.current?.();
+            if (ok) setGyroOn(true);
+          }}
+          className="absolute left-1/2 -translate-x-1/2 bottom-24 z-30 px-5 py-2.5 bg-signal text-ink font-mono text-xs uppercase tracking-widest cursor-pointer"
+        >
+          Aktifkan Gerak
+        </button>
+      )}
+    </>
+  );
 }
