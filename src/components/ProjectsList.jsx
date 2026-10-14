@@ -163,7 +163,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover object-center opacity-70 grayscale-[35%] transition-all duration-700 group-hover/card:scale-105 group-hover/card:opacity-100 group-hover/card:grayscale-0"
+                  className="w-full h-full object-cover object-center opacity-100 transition-transform duration-700 group-hover/card:scale-105"
                 />
                 <div className="absolute inset-0 bg-ink/30 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="font-mono text-xs tracking-widest uppercase text-paper">{project.title}</span>

@@ -209,7 +209,7 @@ export default function WorkPage() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover object-top grayscale-[25%] transition-all duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5 pb-2">
