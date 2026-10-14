@@ -32,7 +32,7 @@ export default function Contact() {
     <section id="contact" className="relative bg-ink pt-24 md:pt-32 pb-12 overflow-hidden grain">
       <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         {/* Judul + CTA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-24 md:mb-28">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-32 md:mb-40">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
