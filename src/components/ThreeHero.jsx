@@ -19,13 +19,17 @@ export default function ThreeHero() {
   const enableGyroRef = useRef(null);
   const gyroStateRef = useRef(null);
   const [gyroOn, setGyroOn] = React.useState(false);
-  const [isTouch, setIsTouch] = React.useState(false);
+  const [needsGyroButton, setNeedsGyroButton] = React.useState(false);
 
   useEffect(() => {
-    setIsTouch(
-      typeof window !== 'undefined' &&
-        ('ontouchstart' in window || navigator.maxTouchPoints > 0)
-    );
+    // Tombol hanya muncul di iOS (yang WAJIB minta izin gerak).
+    // Android & desktop: gyro langsung jalan, tanpa tombol.
+    const ua = navigator.userAgent || '';
+    const isIOS =
+      /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const hasPermFn = typeof window.DeviceOrientationEvent?.requestPermission === 'function';
+    setNeedsGyroButton(isIOS && hasPermFn);
   }, []);
 
   useEffect(() => {
@@ -468,7 +472,16 @@ export default function ThreeHero() {
       return Promise.resolve(true);
     };
 
-    // Simpan untuk dipakai tombol di JSX
+    // Android (bukan iOS) → langsung aktif tanpa tombol
+    const ua = navigator.userAgent || '';
+    const isIOS =
+      /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (!isIOS) {
+      enableGyro();
+    }
+
+    // Simpan untuk dipakai tombol di JSX (hanya iOS yang butuh)
     enableGyroRef.current = enableGyro;
     gyroStateRef.current = gyro;
 
@@ -555,7 +568,7 @@ export default function ThreeHero() {
   return (
     <>
       <div ref={containerRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
-      {isTouch && !gyroOn && (
+      {needsGyroButton && !gyroOn && (
         <button
           onClick={async () => {
             const ok = await enableGyroRef.current?.();
