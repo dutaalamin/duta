@@ -46,6 +46,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
   return (
     <>
       <section
+        id="work"
         onMouseMove={handleMouseMove}
         className="relative pt-16 pb-16 px-6 md:px-12 lg:px-20 w-full max-w-7xl mx-auto"
       >

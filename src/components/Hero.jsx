@@ -10,6 +10,22 @@ export default function Hero() {
       id="home"
       className="relative h-screen w-full bg-ink overflow-hidden grain"
     >
+      {/* Nav kecil — nyatu di hero, tengah atas */}
+      <nav className="absolute top-8 left-0 right-0 z-30 flex justify-center gap-8 sm:gap-10">
+        {[
+          { id: 'work', label: 'Work' },
+          { id: 'contact', label: 'Contact' },
+        ].map((link) => (
+          <button
+            key={link.id}
+            onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+            className="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-signal hover:text-paper transition-colors duration-300 cursor-pointer"
+          >
+            {link.label}
+          </button>
+        ))}
+      </nav>
+
       {/* 3D Scene */}
       <div className="absolute inset-0 z-10">
         <ThreeHero />

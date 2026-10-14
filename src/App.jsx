@@ -19,25 +19,12 @@ export default function App() {
 
       {view === 'home' ? (
         <>
-          <Hero />
+          <Hero onMoreWork={() => setView('work')} />
           <ProjectsList limit={4} onMoreWork={() => setView('work')} />
           <Contact />
         </>
       ) : (
         <>
-          {/* Tombol kembali (pengganti navbar) */}
-          <div className="fixed top-0 left-0 w-full z-40 px-6 md:px-12 lg:px-20 py-7 flex justify-between items-center">
-            <button
-              onClick={() => setView('home')}
-              className="group flex items-center gap-2 cursor-pointer"
-            >
-              <span className="text-signal transition-transform duration-300 group-hover:-translate-x-1">←</span>
-              <span className="text-base sm:text-lg uppercase tracking-wide text-paper/80 group-hover:text-paper transition-colors duration-300">
-                Back
-              </span>
-            </button>
-            <span className="text-base sm:text-lg uppercase tracking-wide text-paper/80">Work</span>
-          </div>
           <WorkPage />
           <Contact />
         </>
