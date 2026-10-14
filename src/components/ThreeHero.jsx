@@ -35,11 +35,20 @@ export default function ThreeHero() {
 
     // Renderer — black background matching rest of portfolio
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setClearColor(0x0a0a0a, 1);
+    renderer.setClearColor(0x0c0b09, 1);
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
+
+    // ── Lighting (khusus aksesoris: headphone) ──
+    scene.add(new THREE.AmbientLight(0xffffff, 1.6));
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    keyLight.position.set(2, 5, 5);
+    scene.add(keyLight);
+    const fillLight = new THREE.DirectionalLight(0xffd9c0, 0.8);
+    fillLight.position.set(-3, 2, 3);
+    scene.add(fillLight);
 
     // ── Textures ──
     const textureLoader = new THREE.TextureLoader();
@@ -310,8 +319,16 @@ export default function ThreeHero() {
             side: THREE.DoubleSide,
           });
         } else {
-          const matcap = matcaps[child.name] || matcaps.gray;
-          mat = new THREE.MeshMatcapMaterial({ matcap });
+          // Warna pakaian — bisa diubah di sini.
+          // Matcap terang ditint warna supaya hasilnya jelas.
+          const CLOTH = {
+            gray: { matcap: matcaps.white, color: '#1b1916' },  // baju — hitam
+            black: { matcap: matcaps.black, color: '#141210' }, // celana — hitam
+            white: { matcap: matcaps.white, color: '#1b1916' }, // sepatu — hitam
+            skin: { matcap: matcaps.skin, color: '#ffffff' },   // tangan
+          };
+          const cfg = CLOTH[child.name] || { matcap: matcaps.gray, color: '#ffffff' };
+          mat = new THREE.MeshMatcapMaterial({ matcap: cfg.matcap, color: new THREE.Color(cfg.color) });
         }
         child.material = mat;
         child.frustumCulled = false;
@@ -324,6 +341,60 @@ export default function ThreeHero() {
 
       // Capture head bone for precise sleeping sprite tracking
       headBone = mesh.getObjectByName('headBone');
+
+      // ── Topi (cap) — ditempel ke tulang kepala ──
+      const capGroup = new THREE.Group();
+      const capMat = new THREE.MeshStandardMaterial({ color: 0x1b1916, roughness: 0.75, metalness: 0.05 });
+      const capDark = new THREE.MeshStandardMaterial({ color: 0x0f0e0c, roughness: 0.8, metalness: 0.05 });
+
+      // Mahkota (dome)
+      const crown = new THREE.Mesh(
+        new THREE.SphereGeometry(0.6, 32, 20, 0, Math.PI * 2, 0, Math.PI * 0.62),
+        capMat
+      );
+      crown.scale.set(1, 0.95, 1);
+      capGroup.add(crown);
+
+      // Cuff / lipatan bawah (torus)
+      const cuff = new THREE.Mesh(new THREE.TorusGeometry(0.56, 0.1, 16, 40), capDark);
+      cuff.rotation.x = Math.PI / 2;
+      cuff.position.y = -0.06;
+      cuff.scale.set(1, 1, 1);
+      capGroup.add(cuff);
+
+      capGroup.position.set(0, 0.58, 0.0);
+      capGroup.scale.setScalar(1.02);
+      headBone.add(capGroup);
+
+      // ── Kacamata hitam ──
+      const shades = new THREE.Group();
+      const lensMat = new THREE.MeshStandardMaterial({
+        color: 0x050505, roughness: 0.12, metalness: 0.7,
+        depthTest: false, transparent: true, opacity: 0.92,
+      });
+      const frameMat = new THREE.MeshStandardMaterial({
+        color: 0x0c0b09, roughness: 0.5, metalness: 0.3,
+        depthTest: false, transparent: true,
+      });
+      for (const side of [-1, 1]) {
+        const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.03, 24), lensMat);
+        lens.rotation.x = Math.PI / 2;
+        lens.scale.set(1.2, 1, 0.9);
+        lens.position.set(side * 0.185, 0.11, 0.47);
+        lens.renderOrder = 40;
+        shades.add(lens);
+        const arm = new THREE.Mesh(new THREE.BoxGeometry(0.028, 0.028, 0.46), frameMat);
+        arm.position.set(side * 0.33, 0.13, 0.2);
+        arm.rotation.y = side * 0.16;
+        arm.renderOrder = 40;
+        shades.add(arm);
+      }
+      const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.03, 0.03), frameMat);
+      bridge.position.set(0, 0.11, 0.48);
+      bridge.renderOrder = 40;
+      shades.add(bridge);
+      shades.scale.setScalar(1.02);
+      headBone.add(shades);
 
       // Wrap in group, rotated to face straight forward towards the camera (exact Math.PI as in duta3d)
       const group = new THREE.Group();

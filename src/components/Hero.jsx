@@ -2,43 +2,48 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ThreeHero from './ThreeHero';
 
+const ease = [0.16, 1, 0.3, 1];
+
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-screen w-full bg-[#0a0a0a] overflow-hidden flex items-center"
+      className="relative h-screen w-full bg-ink overflow-hidden flex items-center grain"
     >
-      {/* Subtle Ambient Background Lighting */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(56,189,248,0.12),rgba(255,255,255,0))]" />
-
-      {/* 3D Scene Canvas */}
-      <div className="absolute inset-0 z-10 pointer-events-auto">
+      {/* 3D Scene */}
+      <div className="absolute inset-0 z-10">
         <ThreeHero />
       </div>
 
-      {/* Hero Typography: Duta Alamin (Left-center, shifted slightly upward for optimal visual balance) */}
-      <div className="absolute left-8 sm:left-14 md:left-20 lg:left-32 xl:left-40 top-[45%] -translate-y-1/2 z-20 pointer-events-none select-none">
+      {/* Judul */}
+      <div className="absolute left-6 sm:left-12 md:left-16 lg:left-24 xl:left-32 top-[44%] -translate-y-1/2 z-20 pointer-events-none select-none w-[min(88vw,600px)]">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative inline-block"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease }}
         >
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white tracking-tight leading-[0.9] select-none font-urbanist">
-            Duta<br />Alamin
+          <h1 className="font-display font-extrabold text-paper leading-[0.86] tracking-[-0.03em] text-[clamp(3.2rem,11vw,8.5rem)]">
+            Duta
+            <br />
+            Alamin
           </h1>
 
-          {/* Duta3D Blue Angled Sticker Banner positioned just under Alamin */}
-          <motion.div
-            initial={{ scale: 0, rotate: 0 }}
-            animate={{ scale: 1, rotate: -5 }}
-            transition={{ duration: 0.4, delay: 0.3, type: "spring", stiffness: 260, damping: 15 }}
-            className="absolute bottom-0 right-[-10px] sm:right-[-20px] md:right-[-28px] translate-y-[88%] bg-[#263c70] text-white font-mono font-bold text-xs sm:text-sm md:text-base lg:text-lg tracking-wider px-3.5 sm:px-5 md:px-6 py-1.5 sm:py-2 shadow-[0_10px_30px_rgba(38,60,112,0.8)] uppercase select-none pointer-events-none"
-          >
-            SOFTWARE ENGINEER
-          </motion.div>
+          <p className="mt-6 font-mono text-sm tracking-[0.3em] uppercase text-mute">
+            Software Engineer
+          </p>
         </motion.div>
       </div>
+
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute left-1/2 -translate-x-1/2 bottom-8 z-20 flex flex-col items-center gap-2 pointer-events-none"
+      >
+        <span className="font-mono text-[10px] tracking-widest text-mute uppercase">Scroll</span>
+        <span className="w-[1px] h-8 bg-gradient-to-b from-rule to-transparent" />
+      </motion.div>
     </section>
   );
 }
