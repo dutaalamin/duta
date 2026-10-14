@@ -296,7 +296,6 @@ export default function ThreeHero() {
     // ── Load Avatar ──
     let mixer = null;
     let headBone = null;
-    let headBase = null;
     let idleAction = null;
     const gltfLoader = new GLTFLoader();
 
@@ -388,11 +387,6 @@ export default function ThreeHero() {
         idleAction.loop = THREE.LoopPingPong;
         idleAction.play();
       }
-
-      // Simpan rotasi awal kepala (buat kepala-ikut-kursor)
-      if (headBone) {
-        headBase = { x: headBone.rotation.x, y: headBone.rotation.y, z: headBone.rotation.z };
-      }
     });
 
     // ── Mouse Parallax ──
@@ -405,6 +399,7 @@ export default function ThreeHero() {
 
     // Arah kursor (buat kepala ikut) — dipakai di loop
     const look = { x: 0, y: 0 };
+    const smoothLook = { x: 0, y: 0 };
     const onPointerLook = (e) => {
       look.x = (e.clientX / window.innerWidth - 0.5) * 2;   // -1 .. 1
       look.y = (e.clientY / window.innerHeight - 0.5) * 2;
@@ -437,13 +432,12 @@ export default function ThreeHero() {
         headBone.getWorldPosition(headPos);
         sleepingMesh.position.set(headPos.x + 0.35, headPos.y + 0.12, headPos.z + 0.05);
 
-        // Kepala ikut kursor (halus, terbatas)
-        if (headBase) {
-          const targetY = headBase.y + look.x * 0.9;
-          const targetX = headBase.x + look.y * 0.5;
-          headBone.rotation.y += (targetY - headBone.rotation.y) * 0.08;
-          headBone.rotation.x += (targetX - headBone.rotation.x) * 0.08;
-        }
+        // Kepala ikut kursor: offset ditambah LANGSUNG ke rotasi animasi
+        // (mixer menulis ulang rotasi tiap frame, jadi kita tambahkan setelahnya)
+        smoothLook.x += (look.x - smoothLook.x) * 0.08;
+        smoothLook.y += (look.y - smoothLook.y) * 0.08;
+        headBone.rotation.y += smoothLook.x * 1.15;
+        headBone.rotation.x += smoothLook.y * 0.7;
       }
 
       // Animate sleeping Z Z Z opacity & progression
