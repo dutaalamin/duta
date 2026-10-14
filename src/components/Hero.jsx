@@ -8,30 +8,36 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-screen w-full bg-ink overflow-hidden flex items-center grain"
+      className="relative h-screen w-full bg-ink overflow-hidden grain"
     >
       {/* 3D Scene */}
       <div className="absolute inset-0 z-10">
         <ThreeHero />
       </div>
 
-      {/* Judul */}
-      <div className="absolute left-6 sm:left-12 md:left-16 lg:left-24 xl:left-32 top-[44%] -translate-y-1/2 z-20 pointer-events-none select-none w-[min(88vw,600px)]">
-        <motion.div
+      {/* Nama (kiri) & peran (kanan) — sejajar rata bawah */}
+      <div className="absolute left-0 right-0 top-[44%] -translate-y-1/2 z-20 flex items-end justify-between px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none select-none">
+        <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
+          className="font-display font-extrabold text-paper leading-[0.86] tracking-[-0.03em] text-[clamp(2.4rem,7vw,5.5rem)]"
         >
-          <h1 className="font-display font-extrabold text-paper leading-[0.86] tracking-[-0.03em] text-[clamp(3.2rem,11vw,8.5rem)]">
-            Duta
-            <br />
-            Alamin
-          </h1>
+          Duta
+          <br />
+          Alamin
+        </motion.h1>
 
-          <p className="mt-6 font-display font-semibold text-lg sm:text-xl text-signal">
-            Software Engineer
-          </p>
-        </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.18, ease }}
+          className="font-display font-extrabold text-signal leading-[0.86] tracking-[-0.03em] text-right text-[clamp(2.4rem,7vw,5.5rem)]"
+        >
+          Software
+          <br />
+          Engineer
+        </motion.p>
       </div>
 
       {/* Scroll hint */}
