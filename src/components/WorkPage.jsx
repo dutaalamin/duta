@@ -123,14 +123,14 @@ export default function WorkPage() {
                       onMouseLeave={() => setHoveredIndex(null)}
                       className="group relative flex items-center justify-between py-8 border-b border-rule/70 cursor-pointer"
                     >
-                      <h3 className="font-display font-semibold text-3xl xl:text-4xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500 tracking-[-0.02em]">
+                      <h3 className="font-mono text-2xl xl:text-3xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500">
                         {project.title}
                       </h3>
                       <div className="flex items-center gap-8">
-                        <span className="font-display text-sm text-mute group-hover:text-paper/80 transition-colors duration-300">
+                        <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
                           {project.category}
                         </span>
-                        <span className="font-display text-sm text-mute/70">{project.year}</span>
+                        <span className="font-mono text-xs text-mute/70">{project.year}</span>
                       </div>
                       <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-signal group-hover:w-full transition-all duration-500" />
                     </a>
@@ -156,7 +156,7 @@ export default function WorkPage() {
                         {filteredProjects.map((project) => (
                           <div key={`h-${project.title}`} className="w-full h-[270px] shrink-0 relative bg-ink-3 overflow-hidden">
                             <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80" />
-                            <div className="absolute bottom-3 left-3 bg-signal text-ink font-display text-[11px] tracking-widest uppercase font-semibold px-3 py-1.5">
+                            <div className="absolute bottom-3 left-3 bg-signal text-ink font-mono text-[10px] tracking-widest uppercase px-3 py-1.5">
                               Open ↗
                             </div>
                           </div>
@@ -181,8 +181,8 @@ export default function WorkPage() {
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-85" />
                     </div>
                     <div className="p-4 flex flex-col gap-1">
-                      <h3 className="font-display font-semibold text-lg text-paper">{project.title}</h3>
-                      <p className="font-display text-xs text-mute">{project.role || project.category}</p>
+                      <h3 className="font-mono text-base text-paper">{project.title}</h3>
+                      <p className="font-mono text-[11px] text-mute">{project.role || project.category}</p>
                     </div>
                   </a>
                 ))}
@@ -214,10 +214,10 @@ export default function WorkPage() {
                   </div>
                   <div className="flex flex-col gap-1.5 pb-2">
                     <div className="flex justify-between items-baseline">
-                      <h3 className="font-display font-semibold text-xl text-paper">{project.title}</h3>
-                      <span className="font-display text-sm text-mute">{project.year}</span>
+                      <h3 className="font-mono text-lg text-paper">{project.title}</h3>
+                      <span className="font-mono text-xs text-mute">{project.year}</span>
                     </div>
-                    <span className="font-display text-xs text-mute tracking-wider">
+                    <span className="font-mono text-[11px] text-mute">
                       {project.role}
                     </span>
                   </div>
