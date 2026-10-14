@@ -25,6 +25,18 @@ export default function App() {
         </>
       ) : (
         <>
+          {/* Tombol kembali */}
+          <div className="fixed top-0 left-0 w-full z-40 px-6 md:px-12 lg:px-20 py-6 flex justify-between items-center bg-ink/70 backdrop-blur-md">
+            <button
+              onClick={() => setView('home')}
+              className="group flex items-center gap-2 cursor-pointer"
+            >
+              <span className="text-signal transition-transform duration-300 group-hover:-translate-x-1">←</span>
+              <span className="font-display font-medium text-base sm:text-lg text-paper group-hover:text-signal transition-colors duration-300">
+                Back
+              </span>
+            </button>
+          </div>
           <WorkPage />
           <Contact />
         </>

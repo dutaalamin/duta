@@ -127,10 +127,10 @@ export default function WorkPage() {
                         {project.title}
                       </h3>
                       <div className="flex items-center gap-8">
-                        <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
+                        <span className="font-display text-sm text-mute group-hover:text-paper/80 transition-colors duration-300">
                           {project.category}
                         </span>
-                        <span className="font-mono text-xs text-mute/70">{project.year}</span>
+                        <span className="font-display text-sm text-mute/70">{project.year}</span>
                       </div>
                       <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-signal group-hover:w-full transition-all duration-500" />
                     </a>
@@ -156,7 +156,7 @@ export default function WorkPage() {
                         {filteredProjects.map((project) => (
                           <div key={`h-${project.title}`} className="w-full h-[270px] shrink-0 relative bg-ink-3 overflow-hidden">
                             <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-80" />
-                            <div className="absolute bottom-3 left-3 bg-signal text-ink font-mono text-[10px] tracking-widest uppercase font-semibold px-3 py-1.5">
+                            <div className="absolute bottom-3 left-3 bg-signal text-ink font-display text-[11px] tracking-widest uppercase font-semibold px-3 py-1.5">
                               Open ↗
                             </div>
                           </div>
@@ -182,7 +182,7 @@ export default function WorkPage() {
                     </div>
                     <div className="p-4 flex flex-col gap-1">
                       <h3 className="font-display font-semibold text-lg text-paper">{project.title}</h3>
-                      <p className="font-mono text-[10px] text-mute">{project.role || project.category}</p>
+                      <p className="font-display text-xs text-mute">{project.role || project.category}</p>
                     </div>
                   </a>
                 ))}
@@ -215,9 +215,9 @@ export default function WorkPage() {
                   <div className="flex flex-col gap-1.5 pb-2">
                     <div className="flex justify-between items-baseline">
                       <h3 className="font-display font-semibold text-xl text-paper">{project.title}</h3>
-                      <span className="font-mono text-xs text-mute">{project.year}</span>
+                      <span className="font-display text-sm text-mute">{project.year}</span>
                     </div>
-                    <span className="font-mono text-[10px] text-mute tracking-wider">
+                    <span className="font-display text-xs text-mute tracking-wider">
                       {project.role}
                     </span>
                   </div>
