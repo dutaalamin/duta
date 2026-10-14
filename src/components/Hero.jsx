@@ -28,7 +28,7 @@ export default function Hero() {
             Alamin
           </h1>
 
-          <p className="mt-6 font-mono text-sm tracking-[0.3em] uppercase text-mute">
+          <p className="mt-6 font-mono text-sm tracking-[0.3em] uppercase text-signal">
             Software Engineer
           </p>
         </motion.div>
