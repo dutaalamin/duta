@@ -50,7 +50,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
         onMouseMove={handleMouseMove}
         className="relative pt-16 pb-16 px-6 md:px-12 lg:px-20 w-full max-w-7xl mx-auto"
       >
-        <h2 className="font-display font-medium text-base text-paper/50 mb-4">Recent Work</h2>
+        <h2 className="font-display font-extrabold text-base text-paper/40 mb-4 tracking-[-0.02em]">Recent Work</h2>
 
         {/* Desktop: daftar bersih */}
         <div className="hidden lg:block relative">
@@ -64,7 +64,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
               onMouseLeave={() => setHoveredIndex(null)}
               className="group relative flex items-center justify-between py-7 cursor-pointer"
             >
-              <h3 className="font-display font-semibold text-3xl xl:text-4xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500 tracking-[-0.02em]">
+              <h3 className="font-display font-extrabold text-3xl xl:text-4xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500 tracking-[-0.03em]">
                 {project.title}
               </h3>
               <span className="font-display text-sm text-mute group-hover:text-paper/80 transition-colors duration-300">
@@ -92,7 +92,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                 />
               </div>
               <div className="p-4 flex flex-col gap-1">
-                <h3 className="font-display font-semibold text-lg text-paper">{project.title}</h3>
+                <h3 className="font-display font-extrabold text-lg text-paper">{project.title}</h3>
                 <p className="font-display text-xs text-mute">{project.role || project.category}</p>
               </div>
             </a>
@@ -106,7 +106,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
               onClick={onMoreWork}
               className="group inline-flex items-center gap-3 text-lg text-paper cursor-pointer"
             >
-              <span>More work</span>
+              <span className="font-display font-extrabold tracking-[-0.02em]">More work</span>
               <span className="text-signal transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
           </div>
@@ -167,7 +167,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                   className="w-full h-full object-cover object-center opacity-100 transition-transform duration-700 group-hover/card:scale-105"
                 />
                 <div className="absolute inset-0 bg-ink/30 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="font-display font-semibold text-sm tracking-widest uppercase text-paper">{project.title}</span>
+                  <span className="font-display font-extrabold text-sm text-paper">{project.title}</span>
                 </div>
               </a>
             ))}
