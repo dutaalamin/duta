@@ -298,9 +298,6 @@ export default function ThreeHero() {
     let headBone = null;
     let headBase = null;
     let idleAction = null;
-    let armBones = null;      // tulang lengan kanan untuk lambaian prosedural
-    let waveStart = 0;
-    let waveUntil = 0;
     const gltfLoader = new GLTFLoader();
 
     gltfLoader.load(avatarUrl, (gltf) => {
@@ -371,36 +368,6 @@ export default function ThreeHero() {
       capGroup.scale.setScalar(1.02);
       headBone.add(capGroup);
 
-      // ── Kacamata hitam ──
-      const shades = new THREE.Group();
-      const lensMat = new THREE.MeshStandardMaterial({
-        color: 0x050505, roughness: 0.12, metalness: 0.7,
-        depthTest: false, transparent: true, opacity: 0.92,
-      });
-      const frameMat = new THREE.MeshStandardMaterial({
-        color: 0x0c0b09, roughness: 0.5, metalness: 0.3,
-        depthTest: false, transparent: true,
-      });
-      for (const side of [-1, 1]) {
-        const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.03, 24), lensMat);
-        lens.rotation.x = Math.PI / 2;
-        lens.scale.set(1.2, 1, 0.9);
-        lens.position.set(side * 0.185, 0.11, 0.47);
-        lens.renderOrder = 40;
-        shades.add(lens);
-        const arm = new THREE.Mesh(new THREE.BoxGeometry(0.028, 0.028, 0.46), frameMat);
-        arm.position.set(side * 0.33, 0.13, 0.2);
-        arm.rotation.y = side * 0.16;
-        arm.renderOrder = 40;
-        shades.add(arm);
-      }
-      const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.03, 0.03), frameMat);
-      bridge.position.set(0, 0.11, 0.48);
-      bridge.renderOrder = 40;
-      shades.add(bridge);
-      shades.scale.setScalar(1.02);
-      headBone.add(shades);
-
       // Wrap in group, rotated to face straight forward towards the camera (exact Math.PI as in duta3d)
       const group = new THREE.Group();
       group.add(mesh);
@@ -422,16 +389,6 @@ export default function ThreeHero() {
         idleAction.play();
       }
 
-      // Tulang lengan kanan (buat lambaian prosedural)
-      armBones = {
-        shoulder: mesh.getObjectByName('rightShoulder'),
-        upper: mesh.getObjectByName('rightarmBone'),
-        fore: mesh.getObjectByName('rightForearmBone'),
-      };
-      if (armBones.shoulder) armBones.shoulderBase = armBones.shoulder.rotation.clone();
-      if (armBones.upper) armBones.upperBase = armBones.upper.rotation.clone();
-      if (armBones.fore) armBones.foreBase = armBones.fore.rotation.clone();
-
       // Simpan rotasi awal kepala (buat kepala-ikut-kursor)
       if (headBone) {
         headBase = { x: headBone.rotation.x, y: headBone.rotation.y, z: headBone.rotation.z };
@@ -445,18 +402,6 @@ export default function ThreeHero() {
       mouse.y = (e.clientY / window.innerHeight - 0.5) * 0.3;
     };
     window.addEventListener('mousemove', onMouseMove);
-
-    // ── Klik karakter → melambai 👋 (prosedural) ──
-    const triggerWave = () => {
-      waveStart = performance.now();
-      waveUntil = waveStart + 2200;
-    };
-
-    const onCanvasClick = (e) => {
-      triggerWave();
-      onUserActivity();
-    };
-    container.addEventListener('click', onCanvasClick);
 
     // Arah kursor (buat kepala ikut) — dipakai di loop
     const look = { x: 0, y: 0 };
@@ -494,36 +439,10 @@ export default function ThreeHero() {
 
         // Kepala ikut kursor (halus, terbatas)
         if (headBase) {
-          const targetY = headBase.y + look.x * 0.35;
-          const targetX = headBase.x + look.y * 0.2;
-          headBone.rotation.y += (targetY - headBone.rotation.y) * 0.06;
-          headBone.rotation.x += (targetX - headBone.rotation.x) * 0.06;
-        }
-      }
-
-      // ── Lambaian tangan prosedural ──
-      if (armBones && armBones.upper && armBones.upperBase) {
-        const now = performance.now();
-        const waving = now < waveUntil;
-        const t = waving ? (now - waveStart) / 1000 : 0;
-
-        if (waving) {
-          // Angkat lengan + goyang
-          const raise = Math.min(1, t / 0.35);
-          const wobble = Math.sin(t * 9) * 0.5;
-          armBones.upper.rotation.z = armBones.upperBase.z + raise * 2.2 + wobble * 0.25;
-          armBones.upper.rotation.x = armBones.upperBase.x - raise * 0.3;
-          if (armBones.fore) {
-            armBones.fore.rotation.z = armBones.foreBase.z + raise * 0.9 + wobble * 0.6;
-          }
-        } else {
-          // Balik ke posisi idle dengan halus
-          const k = 0.12;
-          armBones.upper.rotation.z += (armBones.upperBase.z - armBones.upper.rotation.z) * k;
-          armBones.upper.rotation.x += (armBones.upperBase.x - armBones.upper.rotation.x) * k;
-          if (armBones.fore) {
-            armBones.fore.rotation.z += (armBones.foreBase.z - armBones.fore.rotation.z) * k;
-          }
+          const targetY = headBase.y + look.x * 0.9;
+          const targetX = headBase.x + look.y * 0.5;
+          headBone.rotation.y += (targetY - headBone.rotation.y) * 0.08;
+          headBone.rotation.x += (targetX - headBone.rotation.x) * 0.08;
         }
       }
 
@@ -554,7 +473,6 @@ export default function ThreeHero() {
       window.removeEventListener('mousemove', onUserActivity);
       window.removeEventListener('click', onUserActivity);
       window.removeEventListener('touchstart', onUserActivity);
-      container.removeEventListener('click', onCanvasClick);
       window.removeEventListener('resize', onResize);
       sleepingGeo.dispose();
       sleepingMat.dispose();
