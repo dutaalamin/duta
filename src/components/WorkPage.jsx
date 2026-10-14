@@ -52,7 +52,7 @@ export default function WorkPage() {
       </div>
 
       {/* Control bar */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-10 border-b border-rule">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-8">
         <div className="flex flex-wrap gap-3">
           {filters.map((f) => {
             const isActive = activeFilter === f.id;
@@ -121,18 +121,14 @@ export default function WorkPage() {
                       rel="noopener noreferrer"
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      className="group relative flex items-center justify-between py-8 border-b border-rule/70 cursor-pointer"
+                      className="group relative flex items-center justify-between py-7 cursor-pointer"
                     >
                       <h3 className="font-mono text-2xl xl:text-3xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500">
                         {project.title}
                       </h3>
-                      <div className="flex items-center gap-8">
-                        <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
-                          {project.category}
-                        </span>
-                        <span className="font-mono text-xs text-mute/70">{project.year}</span>
-                      </div>
-                      <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-signal group-hover:w-full transition-all duration-500" />
+                      <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
+                        {project.category}
+                      </span>
                     </a>
                   ))}
                 </div>
@@ -213,10 +209,7 @@ export default function WorkPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-1.5 pb-2">
-                    <div className="flex justify-between items-baseline">
-                      <h3 className="font-mono text-lg text-paper">{project.title}</h3>
-                      <span className="font-mono text-xs text-mute">{project.year}</span>
-                    </div>
+                    <h3 className="font-mono text-lg text-paper">{project.title}</h3>
                     <span className="font-mono text-[11px] text-mute">
                       {project.role}
                     </span>
