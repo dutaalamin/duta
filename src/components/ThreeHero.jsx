@@ -406,6 +406,56 @@ export default function ThreeHero() {
     };
     window.addEventListener('mousemove', onPointerLook);
 
+    // ── Sumber arah: prioritas sentuh > gyro > mouse ──
+    const gyro = { x: 0, y: 0, active: false };
+    let touchActive = false;
+
+    // B. Sentuh & geser jari → kepala ikut
+    const onTouchMove = (e) => {
+      const t = e.touches && e.touches[0];
+      if (!t) return;
+      touchActive = true;
+      look.x = (t.clientX / window.innerWidth - 0.5) * 2;
+      look.y = (t.clientY / window.innerHeight - 0.5) * 2;
+    };
+    const onTouchEnd = () => {
+      // biarkan gyro (kalau ada) yang lanjut
+      setTimeout(() => { touchActive = false; }, 1200);
+    };
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd);
+
+    // A. Gyroscope → miringkan HP, kepala noleh
+    let gyroBase = null;
+    const onOrient = (e) => {
+      if (e.gamma == null || e.beta == null) return;
+      if (!gyroBase) gyroBase = { gamma: e.gamma, beta: e.beta };
+      // gamma: kiri-kanan (-90..90), beta: depan-belakang (-180..180)
+      const gx = (e.gamma - gyroBase.gamma) / 30;   // ~30° = penuh
+      const gy = (e.beta - gyroBase.beta) / 40;
+      gyro.x = Math.max(-1, Math.min(1, gx));
+      gyro.y = Math.max(-1, Math.min(1, gy));
+      gyro.active = true;
+    };
+
+    // iOS 13+ butuh izin → minta saat pertama sentuh
+    const requestGyro = () => {
+      const DOE = window.DeviceOrientationEvent;
+      if (DOE && typeof DOE.requestPermission === 'function') {
+        DOE.requestPermission()
+          .then((state) => {
+            if (state === 'granted') window.addEventListener('deviceorientation', onOrient);
+          })
+          .catch(() => {});
+      } else {
+        window.addEventListener('deviceorientation', onOrient);
+      }
+      window.removeEventListener('touchstart', requestGyro);
+      window.removeEventListener('click', requestGyro);
+    };
+    window.addEventListener('touchstart', requestGyro, { once: true });
+    window.addEventListener('click', requestGyro, { once: true });
+
     // ── Resize ──
     const onResize = () => {
       const rw = container.clientWidth || window.innerWidth;
@@ -434,8 +484,14 @@ export default function ThreeHero() {
 
         // Kepala ikut kursor: offset ditambah LANGSUNG ke rotasi animasi
         // (mixer menulis ulang rotasi tiap frame, jadi kita tambahkan setelahnya)
-        smoothLook.x += (look.x - smoothLook.x) * 0.08;
-        smoothLook.y += (look.y - smoothLook.y) * 0.08;
+        // Sumber: sentuh > gyro > mouse
+        let lx = look.x, ly = look.y;
+        if (gyro.active && !touchActive) {
+          lx = gyro.x;
+          ly = gyro.y;
+        }
+        smoothLook.x += (lx - smoothLook.x) * 0.08;
+        smoothLook.y += (ly - smoothLook.y) * 0.08;
         headBone.rotation.y += smoothLook.x * 1.15;
         headBone.rotation.x += smoothLook.y * 0.7;
       }
@@ -464,6 +520,11 @@ export default function ThreeHero() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mousemove', onPointerLook);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+      window.removeEventListener('touchstart', requestGyro);
+      window.removeEventListener('click', requestGyro);
+      window.removeEventListener('deviceorientation', onOrient);
       window.removeEventListener('mousemove', onUserActivity);
       window.removeEventListener('click', onUserActivity);
       window.removeEventListener('touchstart', onUserActivity);
