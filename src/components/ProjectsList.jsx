@@ -50,7 +50,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
         onMouseMove={handleMouseMove}
         className="relative pt-16 pb-16 px-6 md:px-12 lg:px-20 w-full max-w-7xl mx-auto"
       >
-        <h2 className="font-display font-semibold text-sm uppercase tracking-widest text-mute mb-4">Recent Work</h2>
+        <h2 className="font-display font-medium text-base text-paper/50 mb-4">Recent Work</h2>
 
         {/* Desktop: daftar bersih */}
         <div className="hidden lg:block relative">
