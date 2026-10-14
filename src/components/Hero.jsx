@@ -32,12 +32,12 @@ export default function Hero() {
       </div>
 
       {/* Nama (kiri) & peran (kanan) — sejajar rata bawah */}
-      <div className="absolute left-0 right-0 top-[44%] -translate-y-1/2 z-20 flex items-end justify-between px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none select-none">
+      <div className="absolute left-0 right-0 bottom-24 md:bottom-auto md:top-[44%] md:-translate-y-1/2 z-20 flex items-end justify-between px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none select-none">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
-          className="font-display font-extrabold text-paper leading-[0.86] tracking-[-0.03em] text-[clamp(2.4rem,7vw,5.5rem)]"
+          className="font-display font-extrabold text-paper leading-[0.86] tracking-[-0.03em] text-[1.7rem] sm:text-[clamp(2.4rem,7vw,5.5rem)]"
         >
           Duta
           <br />
@@ -48,7 +48,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.18, ease }}
-          className="font-display font-extrabold text-signal leading-[0.86] tracking-[-0.03em] text-right text-[clamp(2.4rem,7vw,5.5rem)]"
+          className="font-display font-extrabold text-signal leading-[0.86] tracking-[-0.03em] text-right text-[1.7rem] sm:text-[clamp(2.4rem,7vw,5.5rem)]"
         >
           Software
           <br />
