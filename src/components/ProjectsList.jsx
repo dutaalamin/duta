@@ -50,7 +50,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
         onMouseMove={handleMouseMove}
         className="relative pt-16 pb-16 px-6 md:px-12 lg:px-20 w-full max-w-7xl mx-auto"
       >
-        <h2 className="font-display font-extrabold text-base text-paper/40 mb-4 tracking-[-0.02em]">Recent Work</h2>
+        <h2 className="font-mono text-xs uppercase tracking-widest text-mute mb-4">Recent Work</h2>
 
         {/* Desktop: daftar bersih */}
         <div className="hidden lg:block relative">
@@ -64,10 +64,10 @@ export default function ProjectsList({ limit, onMoreWork }) {
               onMouseLeave={() => setHoveredIndex(null)}
               className="group relative flex items-center justify-between py-7 cursor-pointer"
             >
-              <h3 className="font-display font-extrabold text-3xl xl:text-4xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500 tracking-[-0.03em]">
+              <h3 className="font-mono text-2xl xl:text-3xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500">
                 {project.title}
               </h3>
-              <span className="font-display text-sm text-mute group-hover:text-paper/80 transition-colors duration-300">
+              <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
                 {project.category}
               </span>
             </a>
@@ -106,7 +106,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
               onClick={onMoreWork}
               className="group inline-flex items-center gap-3 text-lg text-paper cursor-pointer"
             >
-              <span className="font-display font-extrabold tracking-[-0.02em]">More work</span>
+              <span className="font-mono text-sm uppercase tracking-wider">More work</span>
               <span className="text-signal transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
           </div>
