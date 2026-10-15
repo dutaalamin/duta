@@ -26,8 +26,8 @@ export default function Hero() {
         ))}
       </nav>
 
-      {/* 3D Scene — mobile: panggung di atas, desktop: penuh */}
-      <div className="absolute inset-x-0 top-0 h-[74%] md:inset-0 md:h-full z-10">
+      {/* 3D Scene — penuh di semua ukuran (karakter seukuran asli) */}
+      <div className="absolute inset-0 z-10">
         <ThreeHero />
       </div>
 
