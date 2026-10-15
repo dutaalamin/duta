@@ -26,13 +26,13 @@ export default function Hero() {
         ))}
       </nav>
 
-      {/* 3D Scene */}
-      <div className="absolute inset-0 z-10">
+      {/* 3D Scene — mobile: panggung di atas, desktop: penuh */}
+      <div className="absolute inset-x-0 top-0 h-[74%] md:inset-0 md:h-full z-10">
         <ThreeHero />
       </div>
 
-      {/* Nama (kiri) & peran (kanan) — sejajar rata bawah */}
-      <div className="absolute left-0 right-0 bottom-24 md:bottom-auto md:top-[44%] md:-translate-y-1/2 z-20 flex items-end justify-between px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none select-none">
+      {/* Nama (kiri) & peran (kanan) — mobile di bawah karakter, desktop di tengah */}
+      <div className="absolute left-0 right-0 bottom-[11%] md:bottom-auto md:top-[44%] md:-translate-y-1/2 z-20 flex items-end justify-between px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none select-none">
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

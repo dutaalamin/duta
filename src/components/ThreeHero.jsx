@@ -18,19 +18,6 @@ export default function ThreeHero() {
   const containerRef = useRef(null);
   const enableGyroRef = useRef(null);
   const gyroStateRef = useRef(null);
-  const [gyroOn, setGyroOn] = React.useState(false);
-  const [needsGyroButton, setNeedsGyroButton] = React.useState(false);
-
-  useEffect(() => {
-    // Tombol hanya muncul di iOS (yang WAJIB minta izin gerak).
-    // Android & desktop: gyro langsung jalan, tanpa tombol.
-    const ua = navigator.userAgent || '';
-    const isIOS =
-      /iPad|iPhone|iPod/.test(ua) ||
-      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    const hasPermFn = typeof window.DeviceOrientationEvent?.requestPermission === 'function';
-    setNeedsGyroButton(isIOS && hasPermFn);
-  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -472,13 +459,24 @@ export default function ThreeHero() {
       return Promise.resolve(true);
     };
 
-    // Android (bukan iOS) → langsung aktif tanpa tombol
+    // Android (bukan iOS) → langsung aktif tanpa perlu izin
     const ua = navigator.userAgent || '';
     const isIOS =
       /iPad|iPhone|iPod/.test(ua) ||
       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    let tryEnable = null;
     if (!isIOS) {
       enableGyro();
+    } else {
+      // iOS: tanpa tombol. Izin diminta otomatis saat sentuhan/klik pertama,
+      // dan sentuh-geser jari tetap bekerja walau izin ditolak.
+      tryEnable = () => {
+        enableGyro();
+        window.removeEventListener('touchstart', tryEnable);
+        window.removeEventListener('click', tryEnable);
+      };
+      window.addEventListener('touchstart', tryEnable, { passive: true });
+      window.addEventListener('click', tryEnable);
     }
 
     // Simpan untuk dipakai tombol di JSX (hanya iOS yang butuh)
@@ -551,6 +549,10 @@ export default function ThreeHero() {
       window.removeEventListener('mousemove', onPointerLook);
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', onTouchEnd);
+      if (tryEnable) {
+        window.removeEventListener('touchstart', tryEnable);
+        window.removeEventListener('click', tryEnable);
+      }
       window.removeEventListener('deviceorientation', onOrient);
       window.removeEventListener('mousemove', onUserActivity);
       window.removeEventListener('click', onUserActivity);
@@ -566,19 +568,6 @@ export default function ThreeHero() {
   }, []);
 
   return (
-    <>
-      <div ref={containerRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
-      {needsGyroButton && !gyroOn && (
-        <button
-          onClick={async () => {
-            const ok = await enableGyroRef.current?.();
-            if (ok) setGyroOn(true);
-          }}
-          className="absolute left-1/2 -translate-x-1/2 bottom-24 z-30 px-5 py-2.5 bg-signal text-ink font-mono text-xs uppercase tracking-widest cursor-pointer"
-        >
-          Aktifkan Gerak
-        </button>
-      )}
-    </>
+    <div ref={containerRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
   );
 }
