@@ -43,7 +43,7 @@ export default function WorkPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
-          className="font-display font-extrabold text-paper leading-[0.95] tracking-[-0.03em] text-[clamp(2.4rem,7vw,5.5rem)]"
+          className="font-display font-extrabold text-paper leading-[0.95] tracking-[-0.03em] text-[clamp(2.4rem,7vw,5.5rem)] -ml-[0.04em]"
         >
           Creating next level
           <br />
