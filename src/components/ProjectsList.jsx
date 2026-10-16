@@ -11,15 +11,9 @@ export const projects = [
   { title: 'Atlas', category: 'Design & Development', role: 'Landing page template library', year: '2026', url: 'https://atlas.duta1.com/', image: '/images/projects/atlas.png' },
   { title: 'Shearing 3D', category: 'Interaction & Development', role: 'Interactive 3D plate mill line', year: '2026', url: 'https://shearing3d.duta1.com/', image: '/images/projects/shearing3d.png' },
   { title: 'Rubic', category: 'Design & Development', role: 'Digital Platform', year: '2024', url: 'https://rubic.duta1.com/', image: '/images/projects/rubic.png' },
-  { title: 'Duta', category: 'Design & Development', role: 'Personal Portfolio v1', year: '2024', url: 'https://duta.duta1.com/', image: '/images/projects/duta1.png' },
-  { title: 'Bravo', category: 'Interaction & Development', role: 'AI-powered marketing platform', year: '2024', url: 'https://bravo.duta1.com/', image: '/images/projects/bravo.png' },
   { title: 'Draken', category: 'Design & Development', role: 'Software and tools service platform', year: '2024', url: 'https://draken.duta1.com/', image: '/images/projects/draken.png' },
-  { title: 'Bunga Cerita', category: 'Design & Development', role: 'Storytelling Platform', year: '2024', url: 'https://bungacerita.duta1.com/', image: '/images/projects/bungacerita.png' },
-  { title: 'Stinger', category: 'Design & Development', role: 'Web hosting service platform', year: '2024', url: 'https://stinger.duta1.com/', image: '/images/projects/stinger.png' },
   { title: 'Casava', category: 'Design & Development', role: 'E-commerce platform', year: '2024', url: 'https://casava.duta1.com/', image: '/images/projects/casava.png' },
   { title: '67Sports', category: 'Design & Development', role: 'Sneakers E-commerce', year: '2024', url: 'https://store.duta1.com/', image: '/images/projects/67sports.png' },
-  { title: 'Colorway', category: 'Design & Development', role: 'Color palette generator', year: '2024', url: 'https://color.duta1.com/', image: '/images/projects/colorway.png' },
-  { title: 'Savory', category: 'Design & Development', role: 'Food ordering website', year: '2024', url: 'https://savory.duta1.com/', image: '/images/projects/savory.png' },
   { title: 'Fishytype', category: 'Interaction & Development', role: 'Interactive typing speed test', year: '2023', url: 'https://fishytype.duta1.com/', image: '/images/projects/fishytype.png' },
 ];
 
@@ -42,7 +36,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
   const x1 = useTransform(scrollYProgress, [0, 1], ['0%', '-15%']);
   const x2 = useTransform(scrollYProgress, [0, 1], ['-15%', '0%']);
 
-  const galleryNames = ['Bprotraining', 'Quran', 'ScreenV', 'Wave', 'Atlas', 'Shearing 3D', 'Rubic', 'Casava'];
+  const galleryNames = ['Job Market Analyzer', 'Kora', 'Bprotraining', 'Quran', 'Atlas', 'Shearing 3D', 'Wave', 'ScreenV'];
   const galleryProjects = projects.filter((p) => galleryNames.includes(p.title));
   const row1 = galleryProjects.slice(0, 4);
   const row2 = galleryProjects.slice(4, 8);
