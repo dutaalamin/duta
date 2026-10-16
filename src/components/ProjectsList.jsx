@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTrans
 
 export const projects = [
   { title: 'Job Market Analyzer', category: 'Data & Development', role: 'Python ETL pipeline + SQL dashboard', year: '2026', url: 'https://job.duta1.com/', image: '/images/projects/jobmarket.png' },
+  { title: 'QA Automation', category: 'Testing & Development', role: 'Playwright E2E test suite with CI/CD', year: '2026', url: 'https://qa.duta1.com/', image: '/images/projects/qa-automation.png' },
   { title: 'Kora', category: 'Interaction & Development', role: 'AI chat assistant with voice', year: '2026', url: 'https://kora.duta1.com/', image: '/images/projects/kora.png' },
   { title: 'Bprotraining', category: 'Development & Integration', role: 'Soccer training platform', year: '2026', url: 'https://gtech.gaisar.id/', image: '/images/projects/bprotraining.png' },
   { title: 'Quran', category: 'Design & Development', role: 'Al-Quran Digital Platform', year: '2026', url: 'https://quran.duta1.com/', image: '/images/projects/dquran.png' },
@@ -35,7 +36,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
   const x1 = useTransform(scrollYProgress, [0, 1], ['0%', '-15%']);
   const x2 = useTransform(scrollYProgress, [0, 1], ['-15%', '0%']);
 
-  const galleryNames = ['Job Market Analyzer', 'Kora', 'Bprotraining', 'Quran', 'Atlas', 'Bravo', 'Wave', 'ScreenV'];
+  const galleryNames = ['Job Market Analyzer', 'QA Automation', 'Kora', 'Bprotraining', 'Quran', 'Atlas', 'Bravo', 'Wave'];
   const galleryProjects = projects.filter((p) => galleryNames.includes(p.title));
   const row1 = galleryProjects.slice(0, 4);
   const row2 = galleryProjects.slice(4, 8);
