@@ -17,7 +17,7 @@ export const projects = [
   { title: 'Fishytype', category: 'Interaction & Development', role: 'Interactive typing speed test', year: '2023', url: 'https://fishytype.duta1.com/', image: '/images/projects/fishytype.png' },
 ];
 
-export default function ProjectsList({ limit, onMoreWork }) {
+export default function ProjectsList({ limit, onMoreWork, onOpen }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const visibleProjects = limit ? projects.slice(0, limit) : projects;
 
@@ -53,14 +53,13 @@ export default function ProjectsList({ limit, onMoreWork }) {
         {/* Desktop: daftar bersih */}
         <div className="hidden lg:block relative">
           {visibleProjects.map((project, index) => (
-            <a
+            <button
               key={project.title}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              type="button"
+              onClick={() => onOpen(project)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative flex items-center justify-between py-7 cursor-pointer"
+              className="group relative flex w-full items-center justify-between py-7 cursor-pointer text-left"
             >
               <h3 className="font-mono text-2xl xl:text-3xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500">
                 {project.title}
@@ -68,19 +67,18 @@ export default function ProjectsList({ limit, onMoreWork }) {
               <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
                 {project.category}
               </span>
-            </a>
+            </button>
           ))}
         </div>
 
         {/* Mobile: kartu */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
           {visibleProjects.map((project) => (
-            <a
+            <button
               key={`m-${project.title}`}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group border border-rule bg-ink-2/60 overflow-hidden flex flex-col active:scale-[0.98] transition-all duration-300"
+              type="button"
+              onClick={() => onOpen(project)}
+              className="group border border-rule bg-ink-2/60 overflow-hidden flex flex-col active:scale-[0.98] transition-all duration-300 text-left"
             >
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-ink-3">
                 <img
@@ -93,7 +91,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                 <h3 className="font-display font-extrabold text-lg text-paper">{project.title}</h3>
                 <p className="font-display text-xs text-mute">{project.role || project.category}</p>
               </div>
-            </a>
+            </button>
           ))}
         </div>
 
@@ -152,11 +150,10 @@ export default function ProjectsList({ limit, onMoreWork }) {
             className="flex gap-4 md:gap-6 w-[200vw] sm:w-[150vw] md:w-[125vw] lg:w-[115vw] -ml-[25vw] sm:-ml-[10vw] md:-ml-[5vw]"
           >
             {row.map((project) => (
-              <a
+              <button
                 key={`g-${project.title}`}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                type="button"
+                onClick={() => onOpen(project)}
                 className="w-1/4 aspect-[4/3] bg-ink-3 relative group/card cursor-pointer block overflow-hidden"
               >
                 <img
@@ -167,7 +164,7 @@ export default function ProjectsList({ limit, onMoreWork }) {
                 <div className="absolute inset-0 bg-ink/30 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="font-display font-extrabold text-sm text-paper">{project.title}</span>
                 </div>
-              </a>
+              </button>
             ))}
           </motion.div>
         ))}

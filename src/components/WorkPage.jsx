@@ -4,7 +4,7 @@ import { projects } from './ProjectsList';
 
 const ease = [0.16, 1, 0.3, 1];
 
-export default function WorkPage() {
+export default function WorkPage({ onOpen }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [layoutMode, setLayoutMode] = useState('list');
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -114,14 +114,13 @@ export default function WorkPage() {
               <div className="hidden lg:block">
                 <div className="flex flex-col">
                   {filteredProjects.map((project, index) => (
-                    <a
+                    <button
                       key={`list-${project.title}`}
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      type="button"
+                      onClick={() => onOpen(project)}
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      className="group relative flex items-center justify-between py-7 cursor-pointer"
+                      className="group relative flex w-full items-center justify-between py-7 cursor-pointer text-left"
                     >
                       <h3 className="font-mono text-2xl xl:text-3xl text-paper/90 group-hover:text-paper group-hover:translate-x-3 transition-all duration-500">
                         {project.title}
@@ -129,7 +128,7 @@ export default function WorkPage() {
                       <span className="font-mono text-xs text-mute group-hover:text-paper/80 transition-colors duration-300">
                         {project.category}
                       </span>
-                    </a>
+                    </button>
                   ))}
                 </div>
 
@@ -166,12 +165,11 @@ export default function WorkPage() {
               {/* Mobile */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
                 {filteredProjects.map((project) => (
-                  <a
+                  <button
                     key={`mw-${project.title}`}
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group border border-rule bg-ink-2/60 overflow-hidden flex flex-col active:scale-[0.98] transition-all duration-300"
+                    type="button"
+                    onClick={() => onOpen(project)}
+                    className="group border border-rule bg-ink-2/60 overflow-hidden flex flex-col active:scale-[0.98] transition-all duration-300 text-left"
                   >
                     <div className="relative w-full aspect-[16/10] overflow-hidden bg-ink-3">
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover object-top opacity-85" />
@@ -180,7 +178,7 @@ export default function WorkPage() {
                       <h3 className="font-mono text-base text-paper">{project.title}</h3>
                       <p className="font-mono text-[11px] text-mute">{project.role || project.category}</p>
                     </div>
-                  </a>
+                  </button>
                 ))}
               </div>
             </motion.div>
@@ -194,12 +192,11 @@ export default function WorkPage() {
               className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
             >
               {filteredProjects.map((project) => (
-                <a
+                <button
                   key={`grid-${project.title}`}
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col gap-4 cursor-pointer"
+                  type="button"
+                  onClick={() => onOpen(project)}
+                  className="group flex flex-col gap-4 cursor-pointer text-left"
                 >
                   <div className="w-full aspect-[4/3] overflow-hidden bg-ink-3 relative">
                     <img
@@ -214,7 +211,7 @@ export default function WorkPage() {
                       {project.role}
                     </span>
                   </div>
-                </a>
+                </button>
               ))}
             </motion.div>
           )}
