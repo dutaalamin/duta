@@ -26,9 +26,6 @@ export default function CaseStudy({ study, onBack }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <p className="font-mono text-xs uppercase tracking-widest text-mute mb-4">
-            {study.role} · {study.year}
-          </p>
           <h1 className="font-display font-extrabold leading-[0.95] tracking-[-0.03em] text-[clamp(2.2rem,6vw,4.5rem)]">
             {study.title}
           </h1>
