@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTransform } from 'framer-motion';
 
 export const projects = [
+  { title: 'Job Market Analyzer', category: 'Data & Development', role: 'Python ETL pipeline + SQL dashboard', year: '2026', url: 'https://job.duta1.com/', image: '/images/projects/jobmarket.png' },
   { title: 'Kora', category: 'Interaction & Development', role: 'AI chat assistant with voice', year: '2026', url: 'https://kora.duta1.com/', image: '/images/projects/kora.png' },
   { title: 'Bprotraining', category: 'Development & Integration', role: 'Soccer training platform', year: '2026', url: 'https://gtech.gaisar.id/', image: '/images/projects/bprotraining.png' },
   { title: 'Quran', category: 'Design & Development', role: 'Al-Quran Digital Platform', year: '2026', url: 'https://quran.duta1.com/', image: '/images/projects/dquran.png' },
